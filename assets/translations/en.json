@@ -1,0 +1,49 @@
+{
+  "app_name": " Task",
+  "splash": {
+    "tagline": "Welcome"
+  },
+  "login": {
+    "title": "Welcome back",
+    "subtitle": "Login to continue shopping",
+    "email": "Email",
+    "email_hint": "Enter your email",
+    "password": "Password",
+    "password_hint": "Enter your password",
+    "login_button": "Login",
+    "no_account": "Don't have an account?",
+    "signup_link": "Sign up",
+    "skip": "Continue as guest"
+  },
+  "signup": {
+    "title": "Create account",
+    "subtitle": "Sign up to get started",
+    "name": "Full name",
+    "name_hint": "Enter your full name",
+    "email": "Email",
+    "email_hint": "Enter your email",
+    "password": "Password",
+    "password_hint": "Enter your password",
+    "confirm_password": "Confirm password",
+    "confirm_password_hint": "Re-enter your password",
+    "signup_button": "Create account",
+    "have_account": "Already have an account?",
+    "login_link": "Login"
+  },
+  "validation": {
+    "required": "This field is required",
+    "invalid_email": "Invalid email address",
+    "password_length": "Password must be at least 6 characters",
+    "password_mismatch": "Passwords do not match"
+  },
+  "errors": {
+    "no_internet": "No internet connection",
+    "no_data": "No data found",
+    "no_auth": "You need to login first",
+    "forbidden": "You don't have permission to do this",
+    "validation": "Please check your input",
+    "server": "Server error, please try again later",
+    "unknown": "Something went wrong",
+    "canceled": "Request canceled"
+  }
+}
