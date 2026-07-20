@@ -12,8 +12,8 @@
     "password_hint": "أدخل كلمة السر",
     "login_button": "تسجيل الدخول",
     "no_account": "ما عندك حساب؟",
-    "signup_link": "إنشاء حساب",
-    "skip": "المتابعة كزائر"
+    "signup_link": "إنشاء حساب"
+
   },
   "signup": {
     "title": "إنشاء حساب جديد",

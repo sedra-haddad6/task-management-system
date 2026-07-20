@@ -17,7 +17,7 @@ enum Roles {
   static Roles fromString(String? s) => switch (s) {
     'registered_user' => registeredUser,
     null || 'unregistered_user' => unregisteredUser,
-    _ => unregisteredUser,
+    _ =>throw 'undefined role',
     // 'guest' => guest,
     // _ => throw 'undefined role',
   };
