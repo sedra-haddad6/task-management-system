@@ -8,5 +8,5 @@ abstract class StyleRepo {
   static const  lightBlue = Color(0xE7F2EF);
   static const black = Colors.black;
   static final grey = Color.fromARGB(25,24,59,52);
-
+   
 }
