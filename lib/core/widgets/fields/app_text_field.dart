@@ -4,6 +4,7 @@ import '../../style/repo.dart';
 
 class AppTextField extends StatefulWidget {
   final TextEditingController controller;
+
   final String? label;
   final String? hint;
   final bool isPassword;
@@ -26,7 +27,10 @@ class AppTextField extends StatefulWidget {
   State<AppTextField> createState() => _AppTextFieldState();
 }
 
+
+
 class _AppTextFieldState extends State<AppTextField> {
+
   bool _obscure = true;
 
   @override
@@ -37,9 +41,11 @@ class _AppTextFieldState extends State<AppTextField> {
 
   @override
   Widget build(BuildContext context) {
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+
         if (widget.label != null) ...[
           Text(
             widget.label!,
@@ -49,23 +55,33 @@ class _AppTextFieldState extends State<AppTextField> {
               color: StyleRepo.black,
             ),
           ),
+
           const SizedBox(height: 8),
         ],
+
         TextFormField(
+
           controller: widget.controller,
-          obscureText: _obscure,
           keyboardType: widget.keyboardType,
           validator: widget.validator,
+          obscureText: _obscure,
           decoration: InputDecoration(
             hintText: widget.hint,
             prefixIcon: widget.prefixIcon,
+            prefixIconColor: StyleRepo.fieldBorder,
+            
             suffixIcon: widget.isPassword
                 ? IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _obscure = !_obscure;
+                      });
+                    },
                     icon: Icon(
-                      _obscure ? Icons.visibility_off_outlined : Icons.visibility_outlined,
-                      color: StyleRepo.black,
+                      _obscure
+                          ? Icons.visibility_off_outlined
+                          : Icons.visibility_outlined,
                     ),
-                    onPressed: () => setState(() => _obscure = !_obscure),
                   )
                 : null,
           ),
