@@ -1,33 +1,37 @@
 import '../routes/routes.dart';
 
 enum Roles {
-  registeredUser,
+  admin,
+  member,
   unregisteredUser
   // guest
   ;
 
   // Roles.registeredUser.value
   String get value => switch (this) {
-    registeredUser => "registered_user",
+    admin => "admin",
+    member => "member",
     unregisteredUser => "unregistered_user",
     // guest => "guest",
   };
 
  
   static Roles fromString(String? s) => switch (s) {
-    'registered_user' => registeredUser,
+    'admin' => admin,
+    'member' => member,
     null || 'unregistered_user' => unregisteredUser,
     _ =>throw 'undefined role',
     // 'guest' => guest,
     // _ => throw 'undefined role',
   };
 
-//TODO when we do the home page ..
-  // بدل Pages.login    مؤقتًا هلق
+//TODO بس نضيف صفحات لازم نغيرهم 
   
   Pages get landingPage => switch (this) {
+    admin => Pages.login,     // 👈 TODO: لازم تضيفها بالـ Pages enum
+    member => Pages.login,
     unregisteredUser => Pages.login,
-    registeredUser => Pages.login,
+    
     // guest => Pages.login,
   };
 

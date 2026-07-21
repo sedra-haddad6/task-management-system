@@ -28,7 +28,7 @@ class LoginPage extends StatelessWidget {
 
             Center(
               child: Text(
-                "Welcome Again",
+                 "login.title".tr(),
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
             ),
@@ -37,7 +37,7 @@ class LoginPage extends StatelessWidget {
 
             AppTextField(
               controller: controller.email,
-              hint: "E-mail",
+              hint:"login.email_hint".tr(),
               keyboardType: TextInputType.emailAddress,
               validator: Validator.validateEmail,
               prefixIcon: const Icon(Icons.mail_outline),
@@ -47,7 +47,7 @@ class LoginPage extends StatelessWidget {
 
             AppTextField(
               controller: controller.password,
-              hint: "Password",
+              hint:  "login.password_hint".tr(),
               isPassword: true,
               validator: Validator.validatePassword,
               prefixIcon: const Icon(Icons.lock_outline),
@@ -58,8 +58,8 @@ class LoginPage extends StatelessWidget {
             SizedBox(
               width: 220,
               child: AppElevatedButton(
-                onPressed: controller.login,
-                child: const Text("Login"),
+                 onPressed: () => controller.login(),
+                child:  Text("login.login_button".tr()),
               ),
             ),
 
@@ -68,10 +68,10 @@ class LoginPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("Don't have an account?"),
+                Text("login.no_account".tr()),
                 TextButton(
                   onPressed: controller.goToSignup,
-                  child: const Text("Sign up"),
+                  child:  Text("login.signup_link".tr()),
                 ),
               ],
             ),

@@ -1,7 +1,8 @@
 {
   "app_name": "تاسك",
   "splash": {
-    "tagline": "أهلا"
+    "welcome_to": "أهلاً بك ",
+    "tagline": "لحياة منتجة"
   },
   "login": {
     "title": "أهلاً فيك من جديد",
@@ -17,15 +18,13 @@
   },
   "signup": {
     "title": "إنشاء حساب جديد",
-    "subtitle": "سجّل حساب جديد للبدء",
-    "name": "الاسم الكامل",
-    "name_hint": "أدخل اسمك الكامل",
-    "email": "البريد الإلكتروني",
-    "email_hint": "أدخل بريدك الإلكتروني",
-    "password": "كلمة السر",
-    "password_hint": "أدخل كلمة السر",
-    "confirm_password": "تأكيد كلمة السر",
-    "confirm_password_hint": "أعد إدخال كلمة السر",
+    "name_hint": "الاسم الكامل",
+    "email_hint": "البريد الإلكتروني",
+    "password_hint": "كلمة السر",
+    "confirm_password_hint": "تأكيد كلمة السر",
+    "select_role": "اختر نوع الحساب",
+    "role_member": "عضو",
+    "role_admin": "مدير",
     "signup_button": "إنشاء الحساب",
     "have_account": "عندك حساب مسبقًا؟",
     "login_link": "تسجيل الدخول"

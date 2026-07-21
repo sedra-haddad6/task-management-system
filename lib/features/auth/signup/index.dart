@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:easy_localization/easy_localization.dart';
+
+import 'package:get/get.dart' hide Trans;
 
 import '../../../core/utils/validator.dart';
 import '../../../core/widgets/auth_background/auth_background.dart';
@@ -27,7 +29,7 @@ class SignupPage extends StatelessWidget {
 
             Center(
               child: Text(
-                "Welcome",
+                "signup.title".tr(),
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
             ),
@@ -36,7 +38,7 @@ class SignupPage extends StatelessWidget {
 
             AppTextField(
               controller: controller.name,
-              hint: "Full Name",
+              hint: "signup.name_hint".tr(),
               validator: Validator.notNull,
               prefixIcon: const Icon(Icons.person_outline),
             ),
@@ -45,7 +47,7 @@ class SignupPage extends StatelessWidget {
 
             AppTextField(
               controller: controller.email,
-              hint: "E-mail",
+              hint: "signup.email_hint".tr(),
               keyboardType: TextInputType.emailAddress,
               validator: Validator.validateEmail,
               prefixIcon: const Icon(Icons.mail_outline),
@@ -55,7 +57,7 @@ class SignupPage extends StatelessWidget {
 
             AppTextField(
               controller: controller.password,
-              hint: "Password",
+              hint: "signup.password_hint".tr(),
               isPassword: true,
               validator: Validator.validatePassword,
               prefixIcon: const Icon(Icons.lock_outline),
@@ -65,7 +67,7 @@ class SignupPage extends StatelessWidget {
 
             AppTextField(
               controller: controller.confirmPassword,
-              hint: "Confirm Password",
+              hint: "signup.confirm_password_hint".tr(),
               isPassword: true,
               validator: Validator.validateConfirmPassword(
                 controller.password,
@@ -75,8 +77,8 @@ class SignupPage extends StatelessWidget {
 
             const SizedBox(height: 25),
 
-            const Text(
-              "Select Role",
+            Text(
+              "signup.select_role".tr(),
               style: TextStyle(
                 fontWeight: FontWeight.w600,
               ),
@@ -91,7 +93,7 @@ class SignupPage extends StatelessWidget {
                     onChanged: (value) {
                       controller.role.value = value!;
                     },
-                    title: const Text("Member"),
+                    title: Text("signup.role_member".tr()),
                   ),
                   RadioListTile<String>(
                     value: "admin",
@@ -99,7 +101,7 @@ class SignupPage extends StatelessWidget {
                     onChanged: (value) {
                       controller.role.value = value!;
                     },
-                    title: const Text("Admin"),
+                   title: Text("signup.role_admin".tr()),
                   ),
                 ],
               ),
@@ -108,8 +110,8 @@ class SignupPage extends StatelessWidget {
             const SizedBox(height: 20),
 
             AppElevatedButton(
-              onPressed: controller.signup,
-              child: const Text("Sign up"),
+              onPressed: () => controller.signup(),
+             child: Text("signup.signup_button".tr()),
             ),
 
             const SizedBox(height: 18),
@@ -117,10 +119,10 @@ class SignupPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("Have an account?"),
+                Text("signup.have_account".tr()),
                 TextButton(
                   onPressed: controller.goToLogin,
-                  child: const Text("Login"),
+                 child: Text("signup.login_link".tr()),
                 ),
               ],
             ),

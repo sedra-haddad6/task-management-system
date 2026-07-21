@@ -1,7 +1,8 @@
 {
   "app_name": " Task",
   "splash": {
-    "tagline": "Welcome"
+    "welcome_to": "Welcome to",
+    "tagline": "Productive Life"
   },
   "login": {
     "title": "Welcome back",
@@ -16,18 +17,16 @@
     
   },
   "signup": {
-    "title": "Create account",
-    "subtitle": "Sign up to get started",
-    "name": "Full name",
-    "name_hint": "Enter your full name",
-    "email": "Email",
-    "email_hint": "Enter your email",
-    "password": "Password",
-    "password_hint": "Enter your password",
-    "confirm_password": "Confirm password",
-    "confirm_password_hint": "Re-enter your password",
-    "signup_button": "Create account",
-    "have_account": "Already have an account?",
+    "title": "Create new account",
+    "name_hint": "Full Name",
+    "email_hint": "E-mail",
+    "password_hint": "Password",
+    "confirm_password_hint": "Confirm Password",
+    "select_role": "Select Role",
+    "role_member": "Member",
+    "role_admin": "Admin",
+    "signup_button": "Sign up",
+    "have_account": "Have an account?",
     "login_link": "Login"
   },
   "validation": {

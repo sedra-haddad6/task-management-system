@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
+import 'package:get/get.dart' hide Trans;
+import 'package:easy_localization/easy_localization.dart';
 import '../../../core/widgets/auth_background/auth_background.dart';
 import 'controller.dart';
 
@@ -17,7 +17,7 @@ class SplashPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "Welcome to",
+             "splash.welcome_to".tr(),
               style: TextStyle(
                 fontSize: 24,
                 color: Colors.grey.shade700,
@@ -27,7 +27,7 @@ class SplashPage extends StatelessWidget {
             const SizedBox(height: 10),
 
             Text(
-              "Productive Life",
+              "splash.tagline".tr(),
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     fontSize: 34,
                     fontStyle: FontStyle.italic,

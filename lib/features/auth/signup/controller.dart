@@ -45,6 +45,7 @@ final role = 'member'.obs;
           "name": name.text,
           "email": email.text,
           "password": password.text,
+           "role": role.value,
         },
       ),
     );
@@ -53,7 +54,7 @@ final role = 'member'.obs;
 
     if (response.success) {
       appBuilder.setToken(response.data?['access_token']);
-      appBuilder.setRole(Roles.registeredUser);
+       appBuilder.setRole(Roles.fromString(role.value));
       Get.offAllNamed(appBuilder.role.landingPage.value);
     } else {
       Get.snackbar("", response.message);
