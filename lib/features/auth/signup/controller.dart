@@ -39,12 +39,13 @@ final role = 'member'.obs;
     // TODO - عبّي الـ endPoint 
     ResponseModel response = await APIService.instance.request(
       Request(
-        endPoint: EndPoints.baseUrl, // placeholder لحد ما تتحدد EndPoints.signup
+        endPoint: EndPoints.signup, 
         method: RequestMethod.post,
         body: {
           "name": name.text,
           "email": email.text,
           "password": password.text,
+          "password_confirmation": confirmPassword.text,
            "role": role.value,
         },
       ),
@@ -53,7 +54,7 @@ final role = 'member'.obs;
     Loading.close();
 
     if (response.success) {
-      appBuilder.setToken(response.data?['access_token']);
+     appBuilder.setToken(response.data?['token']);
        appBuilder.setRole(Roles.fromString(role.value));
       Get.offAllNamed(appBuilder.role.landingPage.value);
     } else {

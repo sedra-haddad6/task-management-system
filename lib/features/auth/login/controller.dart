@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' ;
+
+
 
 import '../../../core/config/app_builder.dart';
 import '../../../core/config/roles.dart';
@@ -32,12 +34,13 @@ class LoginPageController extends GetxController {
 
     Loading.show();
 
-    // TODO - عبّي الـ endPoint من  البوستمان
+
     ResponseModel response = await APIService.instance.request(
       Request(
-        endPoint: EndPoints.baseUrl, // placeholder لحد ما تتحدد EndPoints.login
+        endPoint: EndPoints.login, 
         method: RequestMethod.post,
         body: {"email": email.text, "password": password.text},
+        // body: FormData.fromMap({"email": email.text, "password": password.text,}),
       ),
     );
 
