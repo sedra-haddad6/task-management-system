@@ -49,7 +49,9 @@ class LoginPageController extends GetxController {
     if (response.success) {
       appBuilder.setToken(response.data?['access_token']);
       // appBuilder.setRole(Roles.registeredUser);
-      appBuilder.setRole(Roles.fromString(response.data?['role']));
+      // appBuilder.setRole(Roles.fromString(response.data?['role']));
+       appBuilder.setRole(Roles.fromString(response.data?['user']?['role']));
+
       Get.offAllNamed(appBuilder.role.landingPage.value);
     } else {
       Get.snackbar("", response.message);

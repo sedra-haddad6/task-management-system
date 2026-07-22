@@ -55,7 +55,9 @@ final role = 'member'.obs;
 
     if (response.success) {
      appBuilder.setToken(response.data?['token']);
-       appBuilder.setRole(Roles.fromString(role.value));
+      //  appBuilder.setRole(Roles.fromString(role.value));
+      appBuilder.setRole(Roles.fromString(response.data?['user']?['role']));
+
       Get.offAllNamed(appBuilder.role.landingPage.value);
     } else {
       Get.snackbar("", response.message);
