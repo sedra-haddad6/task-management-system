@@ -28,8 +28,8 @@ enum Roles {
 //TODO بس نضيف صفحات لازم نغيرهم 
   
   Pages get landingPage => switch (this) {
-    admin => Pages.login,     // 👈 TODO: لازم تضيفها بالـ Pages enum
-    member => Pages.login,
+    admin => Pages.webDashboard,     // 👈 TODO: لازم تضيفها بالـ Pages enum
+    member => Pages.joinTeam,
     unregisteredUser => Pages.login,
     
     // guest => Pages.login,

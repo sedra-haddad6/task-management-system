@@ -8,7 +8,7 @@ import '../../../core/widgets/loading/loading.dart';
 
 class SignupPageController extends GetxController {
   final AppBuilder appBuilder = Get.find();
-final role = 'member'.obs;
+  final role = 'member'.obs;
   final formKey = GlobalKey<FormState>();
 
   late TextEditingController name, email, password, confirmPassword;
