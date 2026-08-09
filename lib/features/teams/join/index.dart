@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide Trans;
 
+import '../../../core/utils/validator.dart';
 import '../../../core/widgets/auth_background/auth_background.dart';
 import '../../../core/widgets/buttons/elevated_button.dart';
 import '../../../core/widgets/fields/app_text_field.dart';
@@ -29,6 +30,7 @@ class JoinTeamPage extends StatelessWidget {
 
             AppTextField(
               controller: controller.teamCode,
+              //  validator: Validator.notNull,     
               hint: "join_team.code_hint".tr(),
               prefixIcon: Icon(Icons.security),
             ),
