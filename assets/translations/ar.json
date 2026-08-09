@@ -35,6 +35,13 @@
     "password_length": "كلمة السر لازم تكون 6 محارف عالأقل",
     "password_mismatch": "كلمتا السر مش متطابقتين"
   },
+  "join_team": {
+    "code_hint": "أدخل كود الفريق",
+    "button": "انضمام للفريق",
+    "pending_message": "طلبك قيد المراجعة...",
+    "success_title": "تم بنجاح",
+    "error_title": "حدث خطأ"
+  },
   "errors": {
     "no_internet": "لا يوجد اتصال بالإنترنت",
     "no_data": "لا يوجد بيانات",

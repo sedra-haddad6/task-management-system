@@ -1,5 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' hide Trans;
 
 import '../../../core/widgets/auth_background/auth_background.dart';
 import '../../../core/widgets/buttons/elevated_button.dart';
@@ -28,7 +29,7 @@ class JoinTeamPage extends StatelessWidget {
 
             AppTextField(
               controller: controller.teamCode,
-              hint: "Enter the team code",
+              hint: "join_team.code_hint".tr(),
               prefixIcon: Icon(Icons.security),
             ),
 
@@ -36,14 +37,14 @@ class JoinTeamPage extends StatelessWidget {
 
             AppElevatedButton(
               onPressed: controller.joinTeam,
-              child: const Text("Join Team"),
+              child: Text("join_team.button".tr()),
             ),
 
             const SizedBox(height: 50),
 
-            const Center(
+             Center(
               child: Text(
-                "Your request is in progress...",
+                "join_team.pending_message".tr(),
                 style: TextStyle(
                   fontSize: 16,
                 ),

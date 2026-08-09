@@ -35,6 +35,13 @@
     "password_length": "Password must be at least 6 characters",
     "password_mismatch": "Passwords do not match"
   },
+  "join_team": {
+    "code_hint": "Enter the team code",
+    "button": "Join Team",
+    "pending_message": "Your request is in progress...",
+    "success_title": "Success",
+    "error_title": "Error"
+  },
   "errors": {
     "no_internet": "No internet connection",
     "no_data": "No data found",
@@ -45,6 +52,7 @@
     "unknown": "Something went wrong",
     "canceled": "Request canceled"
   },
+  
   "home": {
   "quote_1": "Every big goal is just a series of small tasks completed one after another, so take today's step and let tomorrow take care of itself.",
   "quote_2": "Discipline is choosing between what you want now and what you want most, and every completed task brings you closer to what truly matters.",
