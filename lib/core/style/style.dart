@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'repo.dart';
- //TODO add styles to the sign up and the login
 abstract class AppStyle {
 
   static ThemeData get lightTheme {
@@ -17,7 +16,7 @@ abstract class AppStyle {
       style: ElevatedButton.styleFrom(
         minimumSize: const Size(double.infinity, 56),
 
-        backgroundColor: StyleRepo.darkBlue,
+        backgroundColor: StyleRepo.middleBlue,
 
         foregroundColor: StyleRepo.white,
 

@@ -14,6 +14,7 @@ class JoinTeamPage extends StatelessWidget {
     final controller = Get.put(JoinTeamController());
 
     return AuthBackground(
+      showBackButton: true,
       child: Form(
         key: controller.formKey,
         child: ListView(
@@ -22,6 +23,7 @@ class JoinTeamPage extends StatelessWidget {
             vertical: 60,
           ),
           children: [
+
             const SizedBox(height: 70),
 
             AppTextField(

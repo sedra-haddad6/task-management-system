@@ -36,7 +36,6 @@ class SignupPageController extends GetxController {
 
     Loading.show();
 
-    // TODO - عبّي الـ endPoint 
     ResponseModel response = await APIService.instance.request(
       Request(
         endPoint: EndPoints.signup, 

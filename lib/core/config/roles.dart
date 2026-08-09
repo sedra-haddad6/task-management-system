@@ -29,7 +29,8 @@ enum Roles {
   
   Pages get landingPage => switch (this) {
     admin => Pages.webDashboard,     // 👈 TODO: لازم تضيفها بالـ Pages enum
-    member => Pages.joinTeam,
+    member => Pages.home,
+    // member => Pages.joinTeam,
     unregisteredUser => Pages.login,
     
     // guest => Pages.login,

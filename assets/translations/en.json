@@ -44,5 +44,23 @@
     "server": "Server error, please try again later",
     "unknown": "Something went wrong",
     "canceled": "Request canceled"
-  }
+  },
+  "home": {
+  "quote_1": "Every big goal is just a series of small tasks completed one after another, so take today's step and let tomorrow take care of itself.",
+  "quote_2": "Discipline is choosing between what you want now and what you want most, and every completed task brings you closer to what truly matters.",
+  "quote_3": "A team that plans together, communicates clearly, and trusts each other can turn even the most difficult project into a shared success.",
+  "no_statistics": "No statistics yet",
+  "join_team_button": "Join the team",
+  "teams": "Teams",
+  "tasks": "Tasks",
+  "notifications": "Notifications",
+  "profile": "Profile"
+}
+
+  
+
+
+
+
+  
 }

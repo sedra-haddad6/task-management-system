@@ -1,16 +1,19 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart' hide Trans;
 
 import '../../style/repo.dart';
 
 
 class AuthBackground extends StatelessWidget {
   final Widget child;
+  final bool showBackButton;
 
   const AuthBackground({
     super.key,
     required this.child,
+    this.showBackButton = false,
   });
 
   Widget _circle({
@@ -89,6 +92,22 @@ class AuthBackground extends StatelessWidget {
             Positioned.fill(
               child: child,
             ),
+
+ if (showBackButton)
+      Positioned(
+        top: 8,
+        left: 8,
+        child: IconButton(
+          onPressed: () => Get.back(),
+          icon: const Icon(Icons.arrow_back, color: StyleRepo.darkBlue),
+        ),
+      ),
+
+
+
+
+
+            
           ],
         ),
       ),
