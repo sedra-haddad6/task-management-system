@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' hide Trans;
+import 'package:easy_localization/easy_localization.dart';
 
 import '../../../core/services/rest_api/rest_api.dart';
 import '../../../core/widgets/loading/loading.dart';
@@ -40,7 +41,7 @@ class JoinTeamController extends GetxController {
 
     if (response.success) {
       Get.snackbar(
-        "Success",
+        "join_team.success_title".tr(),
         response.message,
       );
 
@@ -50,7 +51,7 @@ class JoinTeamController extends GetxController {
       // Get.offAllNamed(AppRoutes.teamHome);
     } else {
       Get.snackbar(
-        "Error",
+       "join_team.error_title".tr(),
         response.message,
       );
     }

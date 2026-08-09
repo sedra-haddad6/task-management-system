@@ -30,7 +30,7 @@ class JoinTeamPage extends StatelessWidget {
 
             AppTextField(
               controller: controller.teamCode,
-              //  validator: Validator.notNull,     
+               validator: Validator.notNull,     
               hint: "join_team.code_hint".tr(),
               prefixIcon: Icon(Icons.security),
             ),
