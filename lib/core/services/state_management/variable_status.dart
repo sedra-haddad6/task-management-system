@@ -1,0 +1,1 @@
+enum VariableStatus { loading, hasError, hasData }
