@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:task_management_app/features/notifications/index.dart';
 
 import 'package:task_management_app/features/timer/index.dart';
 
@@ -32,6 +33,7 @@ enum Pages {
 
   // timer,
 
+  notifications,
   teamDetails,   
   taskDetails,   
   taskSuccess;
@@ -43,6 +45,7 @@ enum Pages {
     signup => GetPage(name: value, page: () => SignupPage()),
     home => GetPage( name: value,  page: () => MainPage(),
     ),
+    notifications => GetPage(name: value, page: ()=>NotificationsPage()),
     joinTeam => GetPage(name: value,page: () =>  JoinTeamPage()),
     // ignore: unreachable_switch_case
     webDashboard => GetPage(name: value,page: () =>  WebDashboardPage()),

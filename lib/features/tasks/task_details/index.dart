@@ -18,6 +18,7 @@ class TaskDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TaskDetailsPageNav nav = Get.arguments as TaskDetailsPageNav;
+
     final TaskDetailsPageController controller = Get.put(
       TaskDetailsPageController(nav: nav),
       tag: nav.id.toString(),
@@ -25,13 +26,40 @@ class TaskDetailsPage extends StatelessWidget {
 
     return ObsBuilder(
       obs: controller.taskDetails,
-      loadingBuilder: (context) =>
-          const Scaffold(body: Center(child: CircularProgressIndicator())),
-      errorBuilder: (context, error) =>
-          Scaffold(appBar: AppBar(), body: Center(child: Text(error))),
+
+      loadingBuilder: (context) => const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(
+            color: StyleRepo.darkBlue,
+          ),
+        ),
+      ),
+
+      errorBuilder: (context, error) => Scaffold(
+        appBar: AppBar(),
+        body: Center(
+          child: Text(error),
+        ),
+      ),
+
       builder: (context, taskDetails) {
         return Scaffold(
+          backgroundColor: StyleRepo.white,
+
           appBar: AppBar(
+            backgroundColor: StyleRepo.white,
+            elevation: 0,
+            centerTitle: true,
+
+            leading: IconButton(
+              onPressed: () => Get.back(),
+              icon: const Icon(
+                Icons.arrow_back_ios_new_rounded,
+                size: 20,
+                color: StyleRepo.darkBlue,
+              ),
+            ),
+
             title: Text(
               "task_details.title".tr(),
               style: const TextStyle(
@@ -41,124 +69,458 @@ class TaskDetailsPage extends StatelessWidget {
               ),
             ),
           ),
+
           body: ListView(
-            padding: const EdgeInsets.only(bottom: 24),
+            padding: const EdgeInsets.only(
+              left: 20,
+              right: 20,
+              bottom: 30,
+            ),
+
             children: [
-              // نفس بطاقة المهمة، بس onTap فاضية لأننا أصلاً واقفين جواها
+
+              const SizedBox(height: 8),
+
+              // =========================================================
+              // TASK CARD
+              // =========================================================
+
               TaskCard(
                 task: Task(
                   id: taskDetails.id,
                   name: taskDetails.name,
                   deadline: taskDetails.deadline,
                   teamName: taskDetails.teamName,
-                  status: TaskStatus.pending, // مش مستخدمة بصريا هون
+                  status: TaskStatus.pending,
                 ),
                 onTap: () {},
               ),
 
-              Padding(
-  padding: const EdgeInsets.symmetric(horizontal: 20),
-  child: Align(
-    alignment: Alignment.centerRight,
-    child: InkWell(
-      borderRadius: BorderRadius.circular(30),
-      onTap: () {
-        Get.to(
-          () => TimerPage(
-            task: taskDetails,
-          ),
-        );
-      },
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 14,
-          vertical: 9,
-        ),
-        decoration: BoxDecoration(
-          color: StyleRepo.lightBlue,
-          borderRadius: BorderRadius.circular(25),
-        ),
-        child: const Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              Icons.timer_outlined,
-              size: 19,
-              color: StyleRepo.darkBlue,
-            ),
-            SizedBox(width: 6),
-            Text(
-              "Pomodoro",
-              style: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w600,
-                color: StyleRepo.darkBlue,
+              const SizedBox(height: 14),
+
+              // =========================================================
+              // POMODORO BUTTON
+              // =========================================================
+
+              Align(
+                alignment: Alignment.centerRight,
+
+                child: Material(
+                  color: Colors.transparent,
+
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(22),
+
+                    onTap: () {
+                      Get.to(
+                        () => TimerPage(
+                          task: taskDetails,
+                        ),
+                      );
+                    },
+
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 10,
+                      ),
+
+                      decoration: BoxDecoration(
+                        color: StyleRepo.lightBlue,
+                        borderRadius: BorderRadius.circular(22),
+                      ),
+
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+
+                        children: [
+                          Icon(
+                            Icons.timer_outlined,
+                            size: 18,
+                            color: StyleRepo.darkBlue,
+                          ),
+
+                          SizedBox(width: 7),
+
+                          Text(
+                            "Pomodoro",
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600,
+                              color: StyleRepo.darkBlue,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
               ),
-            ),
-          ],
-        ),
-      ),
-    ),
-  ),
-),
-              const SizedBox(height: 16),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+
+              const SizedBox(height: 20),
+
+              // =========================================================
+              // TASK INFORMATION CARD
+              // =========================================================
+
+              Container(
+                padding: const EdgeInsets.all(20),
+
+                decoration: BoxDecoration(
+                  color: StyleRepo.white,
+
+                  borderRadius: BorderRadius.circular(24),
+
+                  border: Border.all(
+                    color: StyleRepo.fieldBorder.withOpacity(.35),
+                  ),
+
+                  boxShadow: [
+                    BoxShadow(
+                      color: StyleRepo.darkBlue.withOpacity(.06),
+                      blurRadius: 15,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                ),
+
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+
                   children: [
-                    Text("${"task_details.team".tr()} : ${taskDetails.teamName}"),
-                    const SizedBox(height: 4),
-                    Text("${"task_details.assigned_by".tr()} : ${taskDetails.assignedByName}"),
-                    const SizedBox(height: 4),
-                    Text("${"task_details.assigned_to".tr()} : ${taskDetails.assignedToName}"),
-                    const SizedBox(height: 4),
-                    Text("${"task_details.deadline".tr()} : ${taskDetails.deadline}"),
+
+                    // Section title
+                    Row(
+                      children: [
+                        Container(
+                          width: 38,
+                          height: 38,
+
+                          decoration: const BoxDecoration(
+                            color: StyleRepo.lightBlue,
+                            shape: BoxShape.circle,
+                          ),
+
+                          child: const Icon(
+                            Icons.info_outline_rounded,
+                            size: 20,
+                            color: StyleRepo.darkBlue,
+                          ),
+                        ),
+
+                        const SizedBox(width: 10),
+
+                        Text(
+                          "Task Information",
+                          style: const TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                            color: StyleRepo.darkBlue,
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(height: 20),
+
+                    _InfoRow(
+                      icon: Icons.groups_outlined,
+                      title: "task_details.team".tr(),
+                      value: taskDetails.teamName,
+                    ),
+
+                    const SizedBox(height: 15),
+
+                    _InfoRow(
+                      icon: Icons.person_outline_rounded,
+                      title: "task_details.assigned_by".tr(),
+                      value: taskDetails.assignedByName,
+                    ),
+
+                    const SizedBox(height: 15),
+
+                    _InfoRow(
+                      icon: Icons.person_pin_outlined,
+                      title: "task_details.assigned_to".tr(),
+                      value: taskDetails.assignedToName,
+                    ),
+
+                    const SizedBox(height: 15),
+
+                    _InfoRow(
+                      icon: Icons.calendar_today_outlined,
+                      title: "task_details.deadline".tr(),
+                      value: taskDetails.deadline.toString(),
+                    ),
                   ],
                 ),
               ),
-              const SizedBox(height: 24),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Text(
-                  "task_details.steps_of_task".tr(),
-                  style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+
+              const SizedBox(height: 25),
+
+              // =========================================================
+              // STEPS TITLE
+              // =========================================================
+
+              Row(
+                children: [
+                  Container(
+                    width: 38,
+                    height: 38,
+
+                    decoration: const BoxDecoration(
+                      color: StyleRepo.lightBlue,
+                      shape: BoxShape.circle,
+                    ),
+
+                    child: const Icon(
+                      Icons.checklist_rounded,
+                      size: 20,
+                      color: StyleRepo.darkBlue,
+                    ),
+                  ),
+
+                  const SizedBox(width: 10),
+
+                  Text(
+                    "task_details.steps_of_task".tr(),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 17,
+                      color: StyleRepo.darkBlue,
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 14),
+
+              // =========================================================
+              // STEPS
+              // =========================================================
+
+              Container(
+                decoration: BoxDecoration(
+                  color: StyleRepo.white,
+
+                  borderRadius: BorderRadius.circular(24),
+
+                  border: Border.all(
+                    color: StyleRepo.fieldBorder.withOpacity(.35),
+                  ),
+
+                  boxShadow: [
+                    BoxShadow(
+                      color: StyleRepo.darkBlue.withOpacity(.05),
+                      blurRadius: 15,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                ),
+
+                child: Column(
+                  children: [
+
+                    ...taskDetails.steps.map(
+                      (step) => CheckboxListTile(
+                        value: step.isChecked,
+
+                        onChanged: (_) =>
+                            controller.toggleStep(step.id),
+
+                        title: Text(
+                          step.description,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: step.isChecked
+                                ? StyleRepo.fieldBorder
+                                : StyleRepo.darkBlue,
+                            decoration: step.isChecked
+                                ? TextDecoration.lineThrough
+                                : TextDecoration.none,
+                          ),
+                        ),
+
+                        activeColor: StyleRepo.middleBlue,
+
+                        controlAffinity:
+                            ListTileControlAffinity.trailing,
+
+                        contentPadding:
+                            const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 2,
+                        ),
+                      ),
+                    ),
+
+                    // =====================================================
+                    // PROGRESS
+                    // =====================================================
+
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(
+                        18,
+                        8,
+                        18,
+                        18,
+                      ),
+
+                      child: Column(
+                        crossAxisAlignment:
+                            CrossAxisAlignment.start,
+
+                        children: [
+
+                          Row(
+                            mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
+
+                            children: [
+                              const Text(
+                                "Progress",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: StyleRepo.darkBlue,
+                                ),
+                              ),
+
+                              Text(
+                                "${taskDetails.checkedStepsCount}/${taskDetails.steps.length}",
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600,
+                                  color: StyleRepo.middleBlue,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          const SizedBox(height: 8),
+
+                          LinearProgressIndicator(
+                            value: taskDetails.steps.isEmpty
+                                ? 0
+                                : taskDetails.checkedStepsCount /
+                                    taskDetails.steps.length,
+
+                            minHeight: 7,
+
+                            color: StyleRepo.middleBlue,
+
+                            backgroundColor:
+                                StyleRepo.lightBlue,
+
+                            borderRadius:
+                                BorderRadius.circular(10),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              const SizedBox(height: 8),
-              ...taskDetails.steps.map(
-                (step) => CheckboxListTile(
-                  value: step.isChecked,
-                  onChanged: (_) => controller.toggleStep(step.id),
-                  title: Text(step.description),
-                  activeColor: StyleRepo.middleBlue,
-                  controlAffinity: ListTileControlAffinity.trailing,
-                ),
-              ),
-              const SizedBox(height: 16),
+
+              const SizedBox(height: 28),
+
+              // =========================================================
+              // COMPLETE BUTTON
+              // =========================================================
+
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: LinearProgressIndicator(
-                  value: taskDetails.steps.isEmpty
-                      ? 0
-                      : taskDetails.checkedStepsCount / taskDetails.steps.length,
-                  minHeight: 6,
-                  color: StyleRepo.middleBlue,
-                  borderRadius: BorderRadius.circular(10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
                 ),
-              ),
-              const SizedBox(height: 24),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 32),
+
                 child: AppElevatedButton(
                   onPressed: controller.completeTask,
-                  child: Text("task_details.complete_send".tr()),
+
+                  child: Text(
+                    "task_details.complete_send".tr(),
+                  ),
                 ),
               ),
             ],
           ),
         );
       },
+    );
+  }
+}
+
+
+// =======================================================================
+// INFORMATION ROW
+// =======================================================================
+
+class _InfoRow extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String value;
+
+  const _InfoRow({
+    required this.icon,
+    required this.title,
+    required this.value,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+
+      children: [
+
+        Container(
+          width: 38,
+          height: 38,
+
+          decoration: BoxDecoration(
+            color: StyleRepo.lightBlue,
+            borderRadius: BorderRadius.circular(12),
+          ),
+
+          child: Icon(
+            icon,
+            size: 19,
+            color: StyleRepo.darkBlue,
+          ),
+        ),
+
+        const SizedBox(width: 12),
+
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+
+            children: [
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 11,
+                  color: StyleRepo.fieldBorder,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+
+              const SizedBox(height: 3),
+
+              Text(
+                value,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: StyleRepo.darkBlue,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
