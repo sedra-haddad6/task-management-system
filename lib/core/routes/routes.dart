@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:task_management_app/features/notifications/index.dart';
+import 'package:task_management_app/features/profile/index.dart';
 
 import 'package:task_management_app/features/timer/index.dart';
 
@@ -36,15 +37,20 @@ enum Pages {
   notifications,
   teamDetails,   
   taskDetails,   
-  taskSuccess;
+  taskSuccess,
+  
+  profile;
 
   String get value => "/$name";
 
   GetPage get getPage => switch (this) {
     login => GetPage(name: value, page: () => LoginPage()),
     signup => GetPage(name: value, page: () => SignupPage()),
-    home => GetPage( name: value,  page: () => MainPage(),
-    ),
+    home => GetPage( name: value,  page: () => MainPage(),),
+      profile => GetPage(
+    name: value,
+    page: () => ProfilePage(),
+  ),
     notifications => GetPage(name: value, page: ()=>NotificationsPage()),
     joinTeam => GetPage(name: value,page: () =>  JoinTeamPage()),
     // ignore: unreachable_switch_case

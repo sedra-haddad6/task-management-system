@@ -20,6 +20,18 @@ class AppBuilder extends GetxService {
   late Roles role;
   String? token;
 
+
+//المعلومات الشخصية للمستخدم عامة لكل التطبيق 
+  Map<String, dynamic>? user;
+
+  String? get userName => user?['name'];
+
+String? get userEmail => user?['email'];
+
+String? get userImage => user?['image'];
+
+
+
   void setRole(Roles role) {
     _box.write("role", role.value);
     this.role = role;
