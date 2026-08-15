@@ -108,6 +108,28 @@ class PomodoroController extends GetxController {
         '${seconds.toString().padLeft(2, '0')}';
   }
 
+  double get progress {
+  int totalSeconds;
+
+  switch (state.value) {
+    case PomodoroState.work:
+      totalSeconds = workMinutes * 60;
+      break;
+
+    case PomodoroState.shortBreak:
+      totalSeconds = shortBreakMinutes * 60;
+      break;
+
+    case PomodoroState.longBreak:
+      totalSeconds = longBreakMinutes * 60;
+      break;
+  }
+
+  if (totalSeconds == 0) return 0;
+
+  return remainingSeconds.value / totalSeconds;
+}
+
   String get stateLabel {
     switch (state.value) {
       case PomodoroState.work:

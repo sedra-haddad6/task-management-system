@@ -30,7 +30,7 @@ enum Pages {
   joinTeam,
   webDashboard,
 
-  timer,
+  // timer,
 
   teamDetails,   
   taskDetails,   
@@ -47,7 +47,7 @@ enum Pages {
     // ignore: unreachable_switch_case
     webDashboard => GetPage(name: value,page: () =>  WebDashboardPage()),
 
-    timer => GetPage(name: value, page: ()=> TimerCard()),
+    // timer => GetPage(name: value, page: ()=> TimerPage()),
 
     teamDetails => GetPage(name: value, page: () => TeamDetailsPage()),   
     taskDetails => GetPage(name: value, page: () => TaskDetailsPage()),   

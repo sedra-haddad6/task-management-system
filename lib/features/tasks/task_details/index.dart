@@ -6,6 +6,7 @@ import 'package:task_management_app/core/services/state_management/obs_builder.d
 import 'package:task_management_app/core/widgets/buttons/elevated_button.dart';
 import 'package:task_management_app/core/style/repo.dart';
 
+import '../../timer/index.dart';
 import '../models/task.dart';
 import '../models/task_card.dart';
 import 'controller.dart';
@@ -54,6 +55,52 @@ class TaskDetailsPage extends StatelessWidget {
                 ),
                 onTap: () {},
               ),
+
+              Padding(
+  padding: const EdgeInsets.symmetric(horizontal: 20),
+  child: Align(
+    alignment: Alignment.centerRight,
+    child: InkWell(
+      borderRadius: BorderRadius.circular(30),
+      onTap: () {
+        Get.to(
+          () => TimerPage(
+            task: taskDetails,
+          ),
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 14,
+          vertical: 9,
+        ),
+        decoration: BoxDecoration(
+          color: StyleRepo.lightBlue,
+          borderRadius: BorderRadius.circular(25),
+        ),
+        child: const Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.timer_outlined,
+              size: 19,
+              color: StyleRepo.darkBlue,
+            ),
+            SizedBox(width: 6),
+            Text(
+              "Pomodoro",
+              style: TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+                color: StyleRepo.darkBlue,
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  ),
+),
               const SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
