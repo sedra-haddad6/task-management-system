@@ -17,15 +17,15 @@ abstract class AppRouting {
     ...Pages.values.map((page) => page.getPage),
   ];
 }
-//منضيف هون كل الصفحات الجديدة 
+
 enum Pages {
   login,
   signup,
   home,
   joinTeam,
   webDashboard,
-  teamDetails,   // 👈 جديد
-  taskDetails,   // 👈 جديد
+  teamDetails,   
+  taskDetails,   
   taskSuccess;
 
   String get value => "/$name";
@@ -38,8 +38,8 @@ enum Pages {
     joinTeam => GetPage(name: value,page: () =>  JoinTeamPage()),
     // ignore: unreachable_switch_case
     webDashboard => GetPage(name: value,page: () =>  WebDashboardPage()),
-    teamDetails => GetPage(name: value, page: () => TeamDetailsPage()),   // 👈 جديد
-    taskDetails => GetPage(name: value, page: () => TaskDetailsPage()),   // 👈 جديد
+    teamDetails => GetPage(name: value, page: () => TeamDetailsPage()),   
+    taskDetails => GetPage(name: value, page: () => TaskDetailsPage()),   
     taskSuccess => GetPage(name: value, page: () => TaskSuccessPage()),
 
   };
