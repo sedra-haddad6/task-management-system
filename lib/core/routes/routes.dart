@@ -3,8 +3,11 @@ import '../../features/app/main/index.dart';
 import '../../features/app/splash/index.dart';
 import '../../features/auth/login/index.dart';
 import '../../features/auth/signup/index.dart';
+import '../../features/tasks/task_details/index.dart';
+import '../../features/tasks/task_success/index.dart';
 import '../../features/teams/admin/index.dart';
 import '../../features/teams/join/index.dart';
+import '../../features/teams/team_details/index.dart';
 
 abstract class AppRouting {
   static GetPage initialRoute = GetPage(name: "/", page: () => SplashPage());
@@ -20,7 +23,10 @@ enum Pages {
   signup,
   home,
   joinTeam,
-  webDashboard;
+  webDashboard,
+  teamDetails,   // 👈 جديد
+  taskDetails,   // 👈 جديد
+  taskSuccess;
 
   String get value => "/$name";
 
@@ -32,6 +38,9 @@ enum Pages {
     joinTeam => GetPage(name: value,page: () =>  JoinTeamPage()),
     // ignore: unreachable_switch_case
     webDashboard => GetPage(name: value,page: () =>  WebDashboardPage()),
+    teamDetails => GetPage(name: value, page: () => TeamDetailsPage()),   // 👈 جديد
+    taskDetails => GetPage(name: value, page: () => TaskDetailsPage()),   // 👈 جديد
+    taskSuccess => GetPage(name: value, page: () => TaskSuccessPage()),
 
   };
 }

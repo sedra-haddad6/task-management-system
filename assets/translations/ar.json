@@ -61,6 +61,35 @@
   "tasks": "المهام",
   "notifications": "الإشعارات",
   "profile": "الملف الشخصي"
+},
+"teams": {
+  "my_projects": "مشاريعي"
+},
+"team_details": {
+  "score": "{} نقطة",
+  "remaining_tasks_message": "باقي لك {} من المهمات، خلصيهم لتحصلي على نقاط"
+},
+"tasks": {
+  "search_a_task": "دوّري عن مهمة",
+  "done_tasks": "المهام المخلصة",
+  "progress_tasks": "قيد العمل",
+  "pending_tasks": "لسا ما بلشت"
+},
+"task_details": {
+  "title": "تفاصيل المهمة",
+  "team": "الفريق",
+  "assigned_by": "كلفه",
+  "assigned_to": "المكلف",
+  "deadline": "الموعد النهائي",
+  "steps_of_task": "خطوات المهمة",
+  "complete_send": "إكمال وإرسال",
+  "complete_all_steps_first": "لازم تخلصي كل الخطوات أول"
+},
+"task_success": {
+  "title": "تم إرسال مهمتك بنجاح!",
+  "you_got_score": "حصلت على {} نقطة",
+  "continue_getting_scores": "استمري بجمع النقاط لتستبدليها بمكافآت",
+  "go_back_to_tasks": "الرجوع للمهام"
 }
   
   
