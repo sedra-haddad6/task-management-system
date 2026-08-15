@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:task_management_app/features/timer/index.dart';
 
 import '../../features/app/splash/index.dart';
 import '../../features/auth/login/index.dart';
@@ -19,7 +20,8 @@ enum Pages {
   login,
   signup,
   joinTeam,
-  webDashboard;
+  webDashboard,
+  timer;
 
   String get value => "/$name";
 
@@ -29,6 +31,7 @@ enum Pages {
     joinTeam => GetPage(name: value,page: () =>  JoinTeamPage()),
     // ignore: unreachable_switch_case
     webDashboard => GetPage(name: value,page: () =>  WebDashboardPage()),
+    timer => GetPage(name: value, page: ()=> TimerCard()),
 
   };
 }
