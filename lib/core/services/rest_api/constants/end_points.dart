@@ -79,4 +79,16 @@ abstract class EndPoints {
     int projectId,
   ) =>
       "/teams/$teamId/projects/$projectId";
+
+//=========================================
+  // Tasks
+  //=========================================
+
+  static const String tasks = "/tasks";
+
+  static String task(int taskId) => "/tasks/$taskId";
+
+  static String completeTask(int taskId) => "/tasks/$taskId/complete";
+
+
 }

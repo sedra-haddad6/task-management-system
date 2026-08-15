@@ -35,6 +35,13 @@
     "password_length": "Password must be at least 6 characters",
     "password_mismatch": "Passwords do not match"
   },
+  "join_team": {
+    "code_hint": "Enter the team code",
+    "button": "Join Team",
+    "pending_message": "Your request is in progress...",
+    "success_title": "Success",
+    "error_title": "Error"
+  },
   "errors": {
     "no_internet": "No internet connection",
     "no_data": "No data found",
@@ -44,5 +51,54 @@
     "server": "Server error, please try again later",
     "unknown": "Something went wrong",
     "canceled": "Request canceled"
+  },
+  
+  "home": {
+  "quote_1": "Every big goal is just a series of small tasks completed one after another, so take today's step and let tomorrow take care of itself.",
+  "quote_2": "Discipline is choosing between what you want now and what you want most, and every completed task brings you closer to what truly matters.",
+  "quote_3": "A team that plans together, communicates clearly, and trusts each other can turn even the most difficult project into a shared success.",
+  "no_statistics": "No statistics yet",
+  "join_team_button": "Join the team",
+  "teams": "Teams",
+  "tasks": "Tasks",
+  "notifications": "Notifications",
+  "profile": "Profile"
+},
+
+  "teams": {
+    "my_projects": "My Projects"
+  },
+  "team_details": {
+    "score": "{} scores",
+    "remaining_tasks_message": "You have {} tasks left, complete them to get scores"
+  },
+  "tasks": {
+    "search_a_task": "Search a task",
+    "done_tasks": "Done Tasks",
+    "progress_tasks": "Progress Tasks",
+    "pending_tasks": "Pending Tasks"
+  },
+  "task_details": {
+    "title": "Task Details",
+    "team": "Team",
+    "assigned_by": "Assigned By",
+    "assigned_to": "Assigned To",
+    "deadline": "Deadline",
+    "steps_of_task": "Steps of task",
+    "complete_send": "complete send",
+    "complete_all_steps_first": "Please complete all steps first"
+  },
+  "task_success": {
+    "title": "Your Task Sent Successfully !",
+    "you_got_score": "You got {} score",
+    "continue_getting_scores": "Continue getting scores to replace them with rewards",
+    "go_back_to_tasks": "Go Back To Tasks"
   }
 }
+
+  
+
+
+
+
+  

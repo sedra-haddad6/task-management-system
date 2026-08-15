@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' hide Trans;
 
+import '../../../core/utils/validator.dart';
 import '../../../core/widgets/auth_background/auth_background.dart';
 import '../../../core/widgets/buttons/elevated_button.dart';
 import '../../../core/widgets/fields/app_text_field.dart';
@@ -14,6 +16,7 @@ class JoinTeamPage extends StatelessWidget {
     final controller = Get.put(JoinTeamController());
 
     return AuthBackground(
+      showBackButton: true,
       child: Form(
         key: controller.formKey,
         child: ListView(
@@ -22,11 +25,13 @@ class JoinTeamPage extends StatelessWidget {
             vertical: 60,
           ),
           children: [
+
             const SizedBox(height: 70),
 
             AppTextField(
               controller: controller.teamCode,
-              hint: "Enter the team code",
+               validator: Validator.notNull,     
+              hint: "join_team.code_hint".tr(),
               prefixIcon: Icon(Icons.security),
             ),
 
@@ -34,14 +39,14 @@ class JoinTeamPage extends StatelessWidget {
 
             AppElevatedButton(
               onPressed: controller.joinTeam,
-              child: const Text("Join Team"),
+              child: Text("join_team.button".tr()),
             ),
 
             const SizedBox(height: 50),
 
-            const Center(
+             Center(
               child: Text(
-                "Your request is in progress...",
+                "join_team.pending_message".tr(),
                 style: TextStyle(
                   fontSize: 16,
                 ),

@@ -32,7 +32,17 @@ class APIService extends GetxService {
       _headers["Accept-Language"] = language;
     }
     _dio = Dio();
-    _dio.options = BaseOptions(headers: _headers, responseType: ResponseType.json);
+    _dio.options = BaseOptions(headers: _headers, responseType: ResponseType.json,
+    
+//TODO
+// اذا عم يطول كتير بالرد و مافي رد  و جربي شغلي هدول 
+  //   connectTimeout: const Duration(seconds: 15),   
+  // sendTimeout: const Duration(seconds: 15),      
+  // receiveTimeout: const Duration(seconds: 15),
+    
+    
+    
+    );
     if (withLog) headerLogger(_headers);
   }
 
