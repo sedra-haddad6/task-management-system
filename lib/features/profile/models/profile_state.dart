@@ -6,7 +6,7 @@ class ProfileStats {
   final int currentScore;
   final int lostScore;
 
-  ProfileStats({
+  const ProfileStats({
     required this.completedTasks,
     required this.inProgressTasks,
     required this.pendingTasks,
@@ -16,11 +16,25 @@ class ProfileStats {
 
   factory ProfileStats.fromJson(Map<String, dynamic> json) {
     return ProfileStats(
-      completedTasks: json['completed_tasks'] ?? 0,
-      inProgressTasks: json['in_progress_tasks'] ?? 0,
-      pendingTasks: json['pending_tasks'] ?? 0,
-      currentScore: json['current_score'] ?? 0,
-      lostScore: json['lost_score'] ?? 0,
+      completedTasks: _toInt(json['completed_tasks']),
+      inProgressTasks: _toInt(json['in_progress_tasks']),
+      pendingTasks: _toInt(json['pending_tasks']),
+      currentScore: _toInt(json['current_score']),
+      lostScore: _toInt(json['lost_score']),
     );
+  }
+
+  static int _toInt(dynamic value) {
+    if (value == null) return 0;
+
+    if (value is int) {
+      return value;
+    }
+
+    if (value is double) {
+      return value.toInt();
+    }
+
+    return int.tryParse(value.toString()) ?? 0;
   }
 }

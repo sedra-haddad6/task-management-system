@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:easy_localization/easy_localization.dart';
@@ -10,32 +11,32 @@ import '../services/rest_api/rest_api.dart';
 
 const String kStorageApp = "app_1";
 
-///  loads saved role/token, initializes the API service
-/// then routes the user to لtإhe correct landing page
-/// 
-/// 
 class AppBuilder extends GetxService {
   final GetStorage _box = GetStorage(kStorageApp);
 
   late Roles role;
   String? token;
 
-
-//المعلومات الشخصية للمستخدم عامة لكل التطبيق 
   Map<String, dynamic>? user;
+
+  // ================= USER DATA =================
+
+  String? get userId => user?['id']?.toString();
 
   String? get userName => user?['name'];
 
-String? get userEmail => user?['email'];
+  String? get userEmail => user?['email'];
 
-String? get userImage => user?['profile_image'];
+  String? get userImage => user?['image'];
 
-
+  // ================= ROLE =================
 
   void setRole(Roles role) {
     _box.write("role", role.value);
     this.role = role;
   }
+
+  // ================= TOKEN =================
 
   void setToken(String? token) {
     if (token == null) {
@@ -43,29 +44,78 @@ String? get userImage => user?['profile_image'];
     } else {
       _box.write("token", token);
     }
+
     this.token = token;
+
     APIService.instance.setToken(token);
   }
 
+  // ================= USER =================
+
+  void setUser(Map<String, dynamic>? user) {
+    this.user = user;
+
+    if (user == null) {
+      _box.remove("user");
+    } else {
+      _box.write("user", jsonEncode(user));
+    }
+  }
+
+  // ================= LOAD DATA =================
+
   Future<void> _loadUserData() async {
     await _box.initStorage;
-    role = Roles.fromString(_box.read("role"));
+
+    role = Roles.fromString(
+      _box.read("role"),
+    );
+
     token = _box.read("token");
-    log(role.toString(), name: "APP BUILDER");
+
+    final savedUser = _box.read("user");
+
+    if (savedUser != null) {
+      try {
+        if (savedUser is String) {
+          user = Map<String, dynamic>.from(
+            jsonDecode(savedUser),
+          );
+        } else if (savedUser is Map) {
+          user = Map<String, dynamic>.from(savedUser);
+        }
+      } catch (e) {
+        log(
+          "Failed to load saved user: $e",
+          name: "APP BUILDER",
+        );
+      }
+    }
+
+    log(
+      "User: $user",
+      name: "APP BUILDER",
+    );
+
+    log(
+      "Role: $role",
+      name: "APP BUILDER",
+    );
   }
+
+  // ================= LOGOUT =================
 
   Future<void> logout() async {
-
-    await APIService.instance.request(
-    Request(
-      endPoint: EndPoints.logout,
-      method: RequestMethod.post,
-    ),
-  );
     setRole(Roles.unregisteredUser);
     setToken(null);
-    Get.offAllNamed(role.landingPage.value);
+    setUser(null);
+
+    Get.offAllNamed(
+      role.landingPage.value,
+    );
   }
+
+  // ================= INIT =================
 
   Future<void> init() async {
     await _loadUserData();
@@ -73,11 +123,14 @@ String? get userImage => user?['profile_image'];
     Get.put(
       APIService(
         token: token,
-        language: EasyLocalization.of(Get.context!)!.currentLocale!.languageCode,
+        language: EasyLocalization.of(
+          Get.context!,
+        )!.currentLocale!.languageCode,
       ),
     );
 
-    // TODO - أي تهيئة إضافية  بتنحط هون قبل التوجيه
-    Get.offAllNamed(role.landingPage.value);
+    Get.offAllNamed(
+      role.landingPage.value,
+    );
   }
 }

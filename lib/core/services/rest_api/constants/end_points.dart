@@ -42,7 +42,7 @@ abstract class EndPoints {
   static const String logoutAll = "/auth/logout-all";
   static const String me = "/auth/me";
   static const profileStats = "/user/statistics";
-  static const notifications = "/notifications"; 
+  static const notifications = "/notification"; 
   //=========================================
   // Teams
   //=========================================
