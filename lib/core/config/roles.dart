@@ -30,7 +30,7 @@ enum Roles {
   Pages get landingPage => switch (this) {
 
     admin => Pages.webDashboard,    
-    member => Pages.joinTeam,
+    member => Pages.home,
     // member => Pages.joinTeam,
     unregisteredUser => Pages.login,
     

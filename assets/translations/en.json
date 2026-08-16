@@ -64,6 +64,12 @@
   "notifications": "Notifications",
   "profile": "Profile"
 },
+"drawer": {
+  "settings": "Settings",
+  "language": "Language",
+  "theme": "Theme",
+  "logout": "Logout"
+},
 
   "teams": {
     "my_projects": "My Projects"

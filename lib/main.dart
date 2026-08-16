@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide Trans;
+import 'package:get_storage/get_storage.dart'; 
 
+import 'core/services/theme/controller.dart';
 import 'core/routes/routes.dart';
 import 'core/style/style.dart';
 
@@ -9,6 +11,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
+
+  await Get.putAsync(() => ThemeController().init());
+ 
   runApp(
     EasyLocalization(
       supportedLocales: const [Locale('en'), Locale('ar')],

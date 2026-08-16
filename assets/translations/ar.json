@@ -62,6 +62,12 @@
   "notifications": "الإشعارات",
   "profile": "الملف الشخصي"
 },
+"drawer": {
+  "settings": "الإعدادات",
+  "language": "اللغة",
+  "theme": "المظهر",
+  "logout": "تسجيل الخروج"
+},
 "teams": {
   "my_projects": "مشاريعي"
 },

@@ -47,7 +47,7 @@ class LoginPageController extends GetxController {
     Loading.close();
 
     if (response.success) {
-      appBuilder.setToken(response.data?['access_token']);
+      appBuilder.setToken(response.data?['token']);
       // appBuilder.setRole(Roles.registeredUser);
       // appBuilder.setRole(Roles.fromString(response.data?['role']));
        appBuilder.setRole(Roles.fromString(response.data?['user']?['role']));
