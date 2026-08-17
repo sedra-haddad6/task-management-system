@@ -59,8 +59,15 @@
   "join_team_button": "الانضمام إلى فريق" ,
   "teams": "الفرق",
   "tasks": "المهام",
+  "no_statistics": "لا توجد إحصائيات بعد",
   "notifications": "الإشعارات",
   "profile": "الملف الشخصي"
+},
+"drawer": {
+  "settings": "الإعدادات",
+  "language": "اللغة",
+  "theme": "المظهر",
+  "logout": "تسجيل الخروج"
 },
 
 "teams": {
@@ -71,10 +78,10 @@
   "remaining_tasks_message": "باقي لك {} من المهمات، خلصيهم لتحصلي على نقاط"
 },
 "tasks": {
-  "search_a_task": "دوّري عن مهمة",
-  "done_tasks": "المهام المخلصة",
+  "search_a_task": "البحث عن مهمة",
+  "done_tasks": "المنجزة  ",
   "progress_tasks": "قيد العمل",
-  "pending_tasks": "لسا ما بلشت"
+  "pending_tasks": " لم تبدأ  "
 },
 "task_details": {
   "title": "تفاصيل المهمة",
@@ -88,9 +95,43 @@
 },
 "task_success": {
   "title": "تم إرسال مهمتك بنجاح!",
-  "you_got_score": "حصلت على {} نقطة",
+  "you_got_score": "حصلت على  نقطة",
   "continue_getting_scores": "استمري بجمع النقاط لتستبدليها بمكافآت",
   "go_back_to_tasks": "الرجوع للمهام"
+},
+"pagination": {
+  "loading": "جارٍ التحميل",
+  "retry": "إعادة المحاولة",
+  "default_error": "حدث خطأ ما"
+},
+"admin": {
+  "welcome": "مرحباً بك أيها المسؤول",
+  "dashboard_description": "لوحة التحكم الخاصة بك متاحة عبر الويب.\nاستخدمها لإدارة الفرق والأعضاء والمهام.",
+  "open_dashboard": "فتح لوحة التحكم",
+  "manage_teams": "إدارة الفرق",
+  "manage_tasks": "إدارة المهام",
+  "manage_members": "إدارة الأعضاء",
+  "view_reports": "عرض التقارير"
+},
+"notifications": {
+  "title": "الإشعارات",
+  "empty_title": "لا توجد إشعارات بعد",
+  "empty_subtitle": "ستظهر إشعاراتك هنا",
+  "retry": "إعادة المحاولة"
+},
+"profile": {
+  "statistics_title": "الإحصائيات",
+  "not_available": "الإحصائيات غير متوفرة حالياً",
+  "retry": "إعادة المحاولة",
+  "tasks_title": "المهام",
+  "tasks_done": " مهمة منجزة",
+  "tasks_in_progress": " مهمة قيد التنفيذ",
+  "tasks_pending": " مهمة قيد الانتظار",
+  "scores_title": "النقاط",
+  "current_score": "رصيدك الحالي  ",
+  "lost_score": "النقاط المفقودة ",
+  "reward_hint": "يمكنك الحصول على مكافأة",
+  "learn_more_scores": "معرفة المزيد عن النقاط"
 }
   
   

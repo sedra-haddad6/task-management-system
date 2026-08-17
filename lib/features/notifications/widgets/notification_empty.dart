@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 
 import '../../../core/style/app_colors.dart';
@@ -30,7 +31,7 @@ class NotificationEmpty extends StatelessWidget {
             const SizedBox(height: 20),
 
              Text(
-              'No notifications yet',
+              'notifications.empty_title'.tr(),
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
@@ -41,7 +42,7 @@ class NotificationEmpty extends StatelessWidget {
             const SizedBox(height: 8),
 
              Text(
-              'You will see your notifications here.',
+               'notifications.empty_subtitle'.tr(),
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 13,

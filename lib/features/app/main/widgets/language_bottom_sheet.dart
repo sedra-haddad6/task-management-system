@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart' hide Trans;
 
 import '../../../../core/style/app_colors.dart';
 
@@ -23,6 +24,7 @@ void showLanguageBottomSheet(BuildContext context) {
               isSelected: sheetContext.locale.languageCode == 'en',
               onTap: () {
                 sheetContext.setLocale(const Locale('en'));
+                 Get.updateLocale(const Locale('en'));
                 Navigator.pop(sheetContext);
               },
             ),
@@ -32,6 +34,7 @@ void showLanguageBottomSheet(BuildContext context) {
               isSelected: sheetContext.locale.languageCode == 'ar',
               onTap: () {
                 sheetContext.setLocale(const Locale('ar'));
+                Get.updateLocale(const Locale('ar'));
                 Navigator.pop(sheetContext);
               },
             ),

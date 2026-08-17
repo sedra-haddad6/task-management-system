@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class EmptyWidget extends StatelessWidget {
@@ -38,7 +39,7 @@ class SliverEmptyWidget extends StatelessWidget {
 
         if (onRefresh != null)
           //TODO - translate
-          ElevatedButton(onPressed: onRefresh!, child: const Text("retry")),
+          ElevatedButton(onPressed: onRefresh!, child:  Text('pagination.retry'.tr())),
       ]),
     );
   }

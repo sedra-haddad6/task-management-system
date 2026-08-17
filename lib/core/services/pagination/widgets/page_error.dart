@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 class PageError extends StatelessWidget {
   final Function() retry;
   final String error;
+
   const PageError({
     super.key,
     required this.retry,
-    //TODO - translate
+  
     this.error = 'Some Error',
   });
 
@@ -20,8 +21,8 @@ class PageError extends StatelessWidget {
         runSpacing: 12,
         children: [
           Text(error),
-          //TODO - translate
-          ElevatedButton(onPressed: retry, child: Text("retry")),
+         
+          ElevatedButton(onPressed: retry, child: Text('pagination.retry'.tr())),
         ],
       ),
     );

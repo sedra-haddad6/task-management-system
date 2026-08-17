@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
+import 'package:get/get.dart' hide Trans;
+import 'package:easy_localization/easy_localization.dart';
 import '../../../core/style/app_colors.dart';
 import '../../../core/widgets/buttons/elevated_button.dart';
 import 'controller.dart';
@@ -35,7 +35,7 @@ class WebDashboardPage extends StatelessWidget {
               const SizedBox(height: 35),
 
               Text(
-                "Welcome Admin",
+                'admin.welcome'.tr(),
                 style: Theme.of(context)
                     .textTheme
                     .headlineMedium,
@@ -43,9 +43,8 @@ class WebDashboardPage extends StatelessWidget {
 
               const SizedBox(height: 18),
 
-              const Text(
-                "Your dashboard is available on the web.\n"
-                "Use it to manage teams, members and tasks.",
+               Text(
+                'admin.dashboard_description'.tr(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 17,
@@ -61,8 +60,8 @@ class WebDashboardPage extends StatelessWidget {
 
                 child: AppElevatedButton(
                   onPressed: controller.openDashboard,
-                  child: const Text(
-                    "Open Dashboard",
+                  child:  Text(
+                    'admin.open_dashboard'.tr(),
                   ),
                 ),
               ),
@@ -87,7 +86,7 @@ class WebDashboardPage extends StatelessWidget {
                           color: context.colors.darkBlue,
                         ),
                         SizedBox(width: 10),
-                        Text("Manage Teams"),
+                        Text('admin.manage_teams'.tr()),
                       ],
                     ),
 
@@ -100,7 +99,7 @@ class WebDashboardPage extends StatelessWidget {
                           color: context.colors.darkBlue,
                         ),
                         SizedBox(width: 10),
-                        Text("Manage Tasks"),
+                        Text('admin.manage_tasks'.tr()),
                       ],
                     ),
 
@@ -113,7 +112,7 @@ class WebDashboardPage extends StatelessWidget {
                           color: context.colors.darkBlue,
                         ),
                         SizedBox(width: 10),
-                        Text("Manage Members"),
+                        Text('admin.manage_members'.tr()),
                       ],
                     ),
 
@@ -126,7 +125,7 @@ class WebDashboardPage extends StatelessWidget {
                           color: context.colors.darkBlue,
                         ),
                         SizedBox(width: 10),
-                        Text("View Reports"),
+                        Text('admin.view_reports'.tr()),
                       ],
                     ),
                   ],

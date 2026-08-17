@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' hide Trans;
 import 'package:task_management_app/features/notifications/contoller.dart';
 
+import 'package:easy_localization/easy_localization.dart';
 
 import '../../core/style/app_colors.dart';
 import 'widgets/notification_empty.dart';
@@ -28,7 +29,7 @@ class NotificationsPage extends StatelessWidget {
         centerTitle: true,
 
         title:  Text(
-          'Notifications',
+           'notifications.title'.tr(),
           style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.bold,

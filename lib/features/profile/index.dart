@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' hide Trans;
 import 'package:task_management_app/features/profile/widgets/statistic_section.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import '../../core/config/app_builder.dart';
 
@@ -79,7 +80,7 @@ class ProfilePage extends StatelessWidget {
                         const SizedBox(height: 12),
 
                          Text(
-                          "Statistics are not available",
+                          'profile.not_available'.tr(),
                           style: TextStyle(
                             color: context.colors.darkBlue,
                             fontSize: 15,
@@ -90,8 +91,8 @@ class ProfilePage extends StatelessWidget {
 
                         TextButton(
                           onPressed: controller.loadProfileStats,
-                          child: const Text(
-                            "Try again",
+                          child:  Text(
+                             'profile.retry'.tr(),
                           ),
                         ),
                       ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_management_app/features/profile/models/profile_state.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import '../../../core/style/app_colors.dart';
 
@@ -19,7 +20,7 @@ class StatisticsSection extends StatelessWidget {
       child: Column(
         children: [
            Text(
-            "Statistics",
+             'profile.statistics_title'.tr(),
             style: TextStyle(
               fontSize: 17,
               fontWeight: FontWeight.w500,
@@ -31,7 +32,7 @@ class StatisticsSection extends StatelessWidget {
 
           _StatisticsBlock(
             icon: Icons.school_outlined,
-            title: "Tasks",
+            title: 'profile.tasks_title'.tr(),
             children: [
               "${stats.completedTasks} tasks done",
               "${stats.inProgressTasks} tasks in progress",
@@ -43,11 +44,11 @@ class StatisticsSection extends StatelessWidget {
 
           _StatisticsBlock(
             icon: Icons.school_outlined,
-            title: "Scores",
+            title: 'profile.scores_title'.tr(),
             children: [
               "You have ${stats.currentScore} scores",
               "You lost ${stats.lostScore} score",
-              "Can get a reward !",
+              'profile.reward_hint'.tr(),
             ],
           ),
 
@@ -56,7 +57,7 @@ class StatisticsSection extends StatelessWidget {
           Align(
             alignment: Alignment.center,
             child: Text(
-              "Learn more about scores",
+              'profile.learn_more_scores'.tr(),
               style: TextStyle(
                 fontSize: 9,
                 color: context.colors.fieldBorder,
