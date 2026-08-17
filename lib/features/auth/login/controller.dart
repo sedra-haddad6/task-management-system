@@ -50,7 +50,7 @@ class LoginPageController extends GetxController {
   final userData = response.data?['user'];
 
   appBuilder.setToken(
-    response.data?['access_token'],
+    response.data?['token'],
   );
 
   if (userData != null) {

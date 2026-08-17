@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/style/repo.dart';
+import '../../../core/style/app_colors.dart';
+
+
 
 class NotificationError extends StatelessWidget {
   final String message;
@@ -20,10 +22,10 @@ class NotificationError extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(
+             Icon(
               Icons.error_outline,
               size: 50,
-              color: StyleRepo.error,
+              color: context.colors.error,
             ),
 
             const SizedBox(height: 15),
@@ -31,8 +33,8 @@ class NotificationError extends StatelessWidget {
             Text(
               message,
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                color: StyleRepo.darkBlue,
+              style:  TextStyle(
+                color: context.colors.darkBlue,
                 fontSize: 14,
               ),
             ),

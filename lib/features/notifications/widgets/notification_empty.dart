@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/style/repo.dart';
 
+import '../../../core/style/app_colors.dart';
 class NotificationEmpty extends StatelessWidget {
   const NotificationEmpty({super.key});
 
@@ -17,35 +17,35 @@ class NotificationEmpty extends StatelessWidget {
               width: 90,
               height: 90,
               decoration: BoxDecoration(
-                color: StyleRepo.lightBlue,
+                color: context.colors.lightBlue,
                 shape: BoxShape.circle,
               ),
-              child: const Icon(
+              child:  Icon(
                 Icons.notifications_none,
                 size: 45,
-                color: StyleRepo.darkBlue,
+                color: context.colors.darkBlue,
               ),
             ),
 
             const SizedBox(height: 20),
 
-            const Text(
+             Text(
               'No notifications yet',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: StyleRepo.darkBlue,
+                color: context.colors.darkBlue,
               ),
             ),
 
             const SizedBox(height: 8),
 
-            const Text(
+             Text(
               'You will see your notifications here.',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 13,
-                color: StyleRepo.fieldBorder,
+                color: context.colors.fieldBorder,
               ),
             ),
           ],

@@ -3,8 +3,9 @@ import 'package:get/get.dart';
 import 'package:task_management_app/features/profile/widgets/statistic_section.dart';
 
 import '../../core/config/app_builder.dart';
-import '../../core/style/repo.dart';
 
+
+import '../../core/style/app_colors.dart';
 import 'controller.dart';
 import 'widgets/profile_header.dart';
 
@@ -20,7 +21,7 @@ class ProfilePage extends StatelessWidget {
     final AppBuilder appBuilder = Get.find<AppBuilder>();
 
     return Scaffold(
-      backgroundColor: StyleRepo.white,
+      backgroundColor: context.colors.white,
 
       body: SafeArea(
         child: Column(
@@ -33,7 +34,7 @@ class ProfilePage extends StatelessWidget {
 
             Container(
               height: 1,
-              color: StyleRepo.grey,
+              color: context.colors.grey,
             ),
 
             Expanded(
@@ -42,9 +43,9 @@ class ProfilePage extends StatelessWidget {
                   // Loading
                   if (controller.isLoading.value &&
                       controller.stats.value == null) {
-                    return const Center(
+                    return  Center(
                       child: CircularProgressIndicator(
-                        color: StyleRepo.darkBlue,
+                        color: context.colors.darkBlue,
                       ),
                     );
                   }
@@ -69,18 +70,18 @@ class ProfilePage extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Icon(
+                         Icon(
                           Icons.bar_chart_outlined,
                           size: 45,
-                          color: StyleRepo.fieldBorder,
+                          color: context.colors.fieldBorder,
                         ),
 
                         const SizedBox(height: 12),
 
-                        const Text(
+                         Text(
                           "Statistics are not available",
                           style: TextStyle(
-                            color: StyleRepo.darkBlue,
+                            color: context.colors.darkBlue,
                             fontSize: 15,
                           ),
                         ),

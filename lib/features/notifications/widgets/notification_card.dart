@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/style/repo.dart';
+
+import '../../../core/style/app_colors.dart';
 import '../models/notification.dart';
 
 class NotificationCard extends StatelessWidget {
@@ -19,10 +20,10 @@ class NotificationCard extends StatelessWidget {
         vertical: 16,
       ),
       decoration: BoxDecoration(
-        color: StyleRepo.white,
+        color: context.colors.white,
         border: Border(
           bottom: BorderSide(
-            color: StyleRepo.grey,
+            color: context.colors.grey,
             width: 0.8,
           ),
         ),
@@ -34,12 +35,12 @@ class NotificationCard extends StatelessWidget {
             width: 42,
             height: 42,
             decoration: BoxDecoration(
-              color: StyleRepo.lightBlue,
+              color: context.colors.lightBlue,
               shape: BoxShape.circle,
             ),
-            child: const Icon(
+            child:  Icon(
               Icons.notifications_none,
-              color: StyleRepo.darkBlue,
+              color: context.colors.darkBlue,
             ),
           ),
 
@@ -56,7 +57,7 @@ class NotificationCard extends StatelessWidget {
                     fontWeight: notification.isRead
                         ? FontWeight.w500
                         : FontWeight.bold,
-                    color: StyleRepo.darkBlue,
+                    color: context.colors.darkBlue,
                   ),
                 ),
 
@@ -64,9 +65,9 @@ class NotificationCard extends StatelessWidget {
 
                 Text(
                   notification.message,
-                  style: const TextStyle(
+                  style:  TextStyle(
                     fontSize: 12,
-                    color: StyleRepo.fieldBorder,
+                    color:context.colors.fieldBorder,
                   ),
                 ),
 
@@ -75,9 +76,9 @@ class NotificationCard extends StatelessWidget {
 
                   Text(
                     notification.createdAt!,
-                    style: const TextStyle(
+                    style:  TextStyle(
                       fontSize: 10,
-                      color: StyleRepo.fieldBorder,
+                      color: context.colors.fieldBorder,
                     ),
                   ),
                 ],

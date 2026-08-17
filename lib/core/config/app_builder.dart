@@ -27,7 +27,7 @@ class AppBuilder extends GetxService {
 
   String? get userEmail => user?['email'];
 
-  String? get userImage => user?['image'];
+  String? get userImage => user?['profile_image'];
 
   // ================= ROLE =================
 

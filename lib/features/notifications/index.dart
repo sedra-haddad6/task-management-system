@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_management_app/features/notifications/contoller.dart';
 
-import '../../core/style/repo.dart';
 
+import '../../core/style/app_colors.dart';
 import 'widgets/notification_empty.dart';
 import 'widgets/notification_error.dart';
 import 'widgets/notification_list.dart';
@@ -19,20 +19,20 @@ class NotificationsPage extends StatelessWidget {
     );
 
     return Scaffold(
-      backgroundColor: StyleRepo.white,
+      backgroundColor: context.colors.white,
 
       appBar: AppBar(
-        backgroundColor: StyleRepo.white,
+        backgroundColor: context.colors.white,
         elevation: 0,
 
         centerTitle: true,
 
-        title: const Text(
+        title:  Text(
           'Notifications',
           style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.bold,
-            color: StyleRepo.darkBlue,
+            color: context.colors.darkBlue,
           ),
         ),
       ),
@@ -42,9 +42,9 @@ class NotificationsPage extends StatelessWidget {
           // Loading
           if (controller.isLoading.value &&
               controller.notifications.isEmpty) {
-            return const Center(
+            return  Center(
               child: CircularProgressIndicator(
-                color: StyleRepo.darkBlue,
+                color: context.colors.darkBlue,
               ),
             );
           }
