@@ -1,12 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/style/repo.dart';
+import '../../../../core/style/app_colors.dart';
+
 
 void showLanguageBottomSheet(BuildContext context) {
   showModalBottomSheet(
     context: context,
-    backgroundColor: StyleRepo.white,
+    backgroundColor: context.colors.white,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
     ),
@@ -59,10 +60,10 @@ class _LanguageOption extends StatelessWidget {
     return ListTile(
       title: Text(
         label,
-        style: const TextStyle(fontSize: 16, color: StyleRepo.darkBlue),
+        style:  TextStyle(fontSize: 16, color: context.colors.darkBlue),
       ),
       trailing: isSelected
-          ? const Icon(Icons.check, color: StyleRepo.middleBlue)
+          ?  Icon(Icons.check, color: context.colors.middleBlue)
           : null,
       onTap: onTap,
     );

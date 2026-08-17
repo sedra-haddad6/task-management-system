@@ -3,8 +3,9 @@ import 'package:get/get.dart';
 import 'package:task_management_app/features/profile/widgets/statistic_section.dart';
 
 import '../../core/config/app_builder.dart';
-import '../../core/style/repo.dart';
 
+
+import '../../core/style/app_colors.dart';
 import 'controller.dart';
 import 'widgets/profile_header.dart';
 
@@ -18,7 +19,7 @@ class ProfilePage extends StatelessWidget {
     final AppBuilder appBuilder = Get.find<AppBuilder>();
 
     return Scaffold(
-      backgroundColor: StyleRepo.white,
+      backgroundColor: context.colors.white,
 
       body: SafeArea(
         child: Obx(
@@ -35,14 +36,14 @@ class ProfilePage extends StatelessWidget {
 
                 Container(
                   height: 1,
-                  color: StyleRepo.grey,
+                  color: context.colors.grey,
                 ),
 
                 Expanded(
                   child: controller.isLoading.value && stats == null
-                      ? const Center(
+                      ?  Center(
                           child: CircularProgressIndicator(
-                            color: StyleRepo.darkBlue,
+                           color: context.colors.darkBlue,
                           ),
                         )
                       : stats == null

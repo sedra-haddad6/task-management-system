@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../core/style/app_colors.dart'; 
 
-import '../../../core/style/repo.dart';
 
 class ProfileHeader extends StatelessWidget {
   final String name;
@@ -35,10 +35,10 @@ class ProfileHeader extends StatelessWidget {
               children: [
                 Text(
                   name,
-                  style: const TextStyle(
+                  style:  TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.w600,
-                    color: StyleRepo.darkBlue,
+                    color: context.colors.darkBlue,
                   ),
                 ),
 
@@ -46,9 +46,10 @@ class ProfileHeader extends StatelessWidget {
 
                 Text(
                   email,
-                  style: const TextStyle(
+                  style:  TextStyle(
                     fontSize: 11,
-                    color: StyleRepo.fieldBorder,
+                        color: context.colors.fieldBorder,
+
                   ),
                 ),
               ],
@@ -72,25 +73,26 @@ class _ProfileImage extends StatelessWidget {
     return Container(
       width: 74,
       height: 74,
-      decoration: const BoxDecoration(
+      decoration:  BoxDecoration(
         shape: BoxShape.circle,
-        color: StyleRepo.lightBlue,
+         color: context.colors.lightBlue,
       ),
+      
       clipBehavior: Clip.antiAlias,
       child: imageUrl == null || imageUrl!.isEmpty
-          ? const Icon(
+          ?  Icon(
               Icons.person,
               size: 40,
-              color: StyleRepo.darkBlue,
+               color: context.colors.darkBlue,
             )
           : Image.network(
               imageUrl!,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
-                return const Icon(
+                return  Icon(
                   Icons.person,
                   size: 40,
-                  color: StyleRepo.darkBlue,
+                   color: context.colors.darkBlue,
                 );
               },
             ),

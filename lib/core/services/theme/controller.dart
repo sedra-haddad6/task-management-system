@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -19,7 +20,7 @@ class ThemeController extends GetxService {
     isDarkMode.value = !isDarkMode.value;
     _box.write("is_dark_mode", isDarkMode.value);
 
-    // TODO لسا ما عم نبدل الألوان الفعلية هون
+     Get.changeThemeMode(isDarkMode.value ? ThemeMode.dark : ThemeMode.light);
 
   }
 }

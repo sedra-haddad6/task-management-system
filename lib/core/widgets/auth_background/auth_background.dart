@@ -3,7 +3,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide Trans;
 
-import '../../style/repo.dart';
+
+import '../../style/app_colors.dart';
 
 
 class AuthBackground extends StatelessWidget {
@@ -44,7 +45,7 @@ class AuthBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: StyleRepo.white,
+     backgroundColor: context.colors.white,
       body: SafeArea(
         child: Stack(
           children: [
@@ -54,7 +55,7 @@ class AuthBackground extends StatelessWidget {
               right: -45,
               child: _circle(
                 size: 140,
-                color: StyleRepo.darkBlue,
+                color: context.colors.darkBlue,
                 blur: true,
               ),
             ),
@@ -64,7 +65,7 @@ class AuthBackground extends StatelessWidget {
               left: -55,
               child: _circle(
                 size: 135,
-                color: StyleRepo.green,
+                 color: context.colors.green,
                 blur: true,
               ),
             ),
@@ -74,7 +75,7 @@ class AuthBackground extends StatelessWidget {
               left: -40,
               child: _circle(
                 size: 120,
-                color: StyleRepo.green,
+                color: context.colors.green,
                 blur: true,
               ),
             ),
@@ -84,7 +85,7 @@ class AuthBackground extends StatelessWidget {
               right: -40,
               child: _circle(
                 size: 110,
-                color: StyleRepo.green,
+                   color: context.colors.green,
                 blur: true,
               ),
             ),
@@ -99,7 +100,9 @@ class AuthBackground extends StatelessWidget {
         left: 8,
         child: IconButton(
           onPressed: () => Get.back(),
-          icon: const Icon(Icons.arrow_back, color: StyleRepo.darkBlue),
+          icon:  Icon(Icons.arrow_back, 
+          color: context.colors.darkBlue,
+          ),
         ),
       ),
 

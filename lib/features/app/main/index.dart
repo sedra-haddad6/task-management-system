@@ -4,7 +4,8 @@ import 'package:get/get.dart' hide Trans;
 import 'package:task_management_app/features/notifications/index.dart';
 import 'package:task_management_app/features/profile/index.dart';
 
-import '../../../core/style/repo.dart';
+import '../../../core/style/app_colors.dart';
+
 import '../../home/index.dart';
 import '../../tasks/tasks_list/index.dart';
 import '../../teams/teams_list/index.dart';
@@ -22,7 +23,8 @@ class MainPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: StyleRepo.green,
+          backgroundColor: context.colors.green,
+
         elevation: 0,
 
       ),

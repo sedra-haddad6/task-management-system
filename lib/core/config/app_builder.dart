@@ -55,6 +55,8 @@ String? get userImage => user?['profile_image'];
   }
 
   Future<void> logout() async {
+    log("Logout started, calling POST ${EndPoints.logout}", name: "LOGOUT");
+
 
     await APIService.instance.request(
     Request(
@@ -62,8 +64,13 @@ String? get userImage => user?['profile_image'];
       method: RequestMethod.post,
     ),
   );
+
+
     setRole(Roles.unregisteredUser);
     setToken(null);
+
+    log("Local session cleared, redirecting to: ${role.landingPage.value}", name: "LOGOUT");
+    
     Get.offAllNamed(role.landingPage.value);
   }
 

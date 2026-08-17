@@ -4,8 +4,8 @@ import 'package:easy_localization/easy_localization.dart';
 
 import 'package:task_management_app/core/services/state_management/obs_builder.dart';
 import 'package:task_management_app/core/widgets/buttons/elevated_button.dart';
-import 'package:task_management_app/core/style/repo.dart';
 
+import '../../../core/style/app_colors.dart';
 import '../../timer/index.dart';
 import '../models/task.dart';
 import '../models/task_card.dart';
@@ -27,10 +27,10 @@ class TaskDetailsPage extends StatelessWidget {
     return ObsBuilder(
       obs: controller.taskDetails,
 
-      loadingBuilder: (context) => const Scaffold(
+      loadingBuilder: (context) =>  Scaffold(
         body: Center(
           child: CircularProgressIndicator(
-            color: StyleRepo.darkBlue,
+            color: context.colors.darkBlue,
           ),
         ),
       ),
@@ -44,28 +44,28 @@ class TaskDetailsPage extends StatelessWidget {
 
       builder: (context, taskDetails) {
         return Scaffold(
-          backgroundColor: StyleRepo.white,
+          backgroundColor: context.colors.white,
 
           appBar: AppBar(
-            backgroundColor: StyleRepo.white,
+            backgroundColor: context.colors.white,
             elevation: 0,
             centerTitle: true,
 
             leading: IconButton(
               onPressed: () => Get.back(),
-              icon: const Icon(
+              icon:  Icon(
                 Icons.arrow_back_ios_new_rounded,
                 size: 20,
-                color: StyleRepo.darkBlue,
+                color: context.colors.darkBlue,
               ),
             ),
 
             title: Text(
               "task_details.title".tr(),
-              style: const TextStyle(
+              style:  TextStyle(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
-                color: StyleRepo.darkBlue,
+                color: context.colors.darkBlue,
               ),
             ),
           ),
@@ -126,18 +126,18 @@ class TaskDetailsPage extends StatelessWidget {
                       ),
 
                       decoration: BoxDecoration(
-                        color: StyleRepo.lightBlue,
+                        color: context.colors.lightBlue,
                         borderRadius: BorderRadius.circular(22),
                       ),
 
-                      child: const Row(
+                      child:  Row(
                         mainAxisSize: MainAxisSize.min,
 
                         children: [
                           Icon(
                             Icons.timer_outlined,
                             size: 18,
-                            color: StyleRepo.darkBlue,
+                            color: context.colors.darkBlue,
                           ),
 
                           SizedBox(width: 7),
@@ -147,7 +147,7 @@ class TaskDetailsPage extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 13,
                               fontWeight: FontWeight.w600,
-                              color: StyleRepo.darkBlue,
+                              color: context.colors.darkBlue,
                             ),
                           ),
                         ],
@@ -167,17 +167,17 @@ class TaskDetailsPage extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
 
                 decoration: BoxDecoration(
-                  color: StyleRepo.white,
+                  color: context.colors.white,
 
                   borderRadius: BorderRadius.circular(24),
 
                   border: Border.all(
-                    color: StyleRepo.fieldBorder.withOpacity(.35),
+                    color: context.colors.fieldBorder.withOpacity(.35),
                   ),
 
                   boxShadow: [
                     BoxShadow(
-                      color: StyleRepo.darkBlue.withOpacity(.06),
+                      color: context.colors.darkBlue.withOpacity(.06),
                       blurRadius: 15,
                       offset: const Offset(0, 6),
                     ),
@@ -196,15 +196,15 @@ class TaskDetailsPage extends StatelessWidget {
                           width: 38,
                           height: 38,
 
-                          decoration: const BoxDecoration(
-                            color: StyleRepo.lightBlue,
+                          decoration:  BoxDecoration(
+                            color: context.colors.lightBlue,
                             shape: BoxShape.circle,
                           ),
 
-                          child: const Icon(
+                          child:  Icon(
                             Icons.info_outline_rounded,
                             size: 20,
-                            color: StyleRepo.darkBlue,
+                            color: context.colors.darkBlue,
                           ),
                         ),
 
@@ -212,10 +212,10 @@ class TaskDetailsPage extends StatelessWidget {
 
                         Text(
                           "Task Information",
-                          style: const TextStyle(
+                          style:  TextStyle(
                             fontSize: 17,
                             fontWeight: FontWeight.bold,
-                            color: StyleRepo.darkBlue,
+                            color: context.colors.darkBlue,
                           ),
                         ),
                       ],
@@ -268,15 +268,15 @@ class TaskDetailsPage extends StatelessWidget {
                     width: 38,
                     height: 38,
 
-                    decoration: const BoxDecoration(
-                      color: StyleRepo.lightBlue,
+                    decoration:  BoxDecoration(
+                      color: context.colors.lightBlue,
                       shape: BoxShape.circle,
                     ),
 
-                    child: const Icon(
+                    child:  Icon(
                       Icons.checklist_rounded,
                       size: 20,
-                      color: StyleRepo.darkBlue,
+                      color: context.colors.darkBlue,
                     ),
                   ),
 
@@ -284,10 +284,10 @@ class TaskDetailsPage extends StatelessWidget {
 
                   Text(
                     "task_details.steps_of_task".tr(),
-                    style: const TextStyle(
+                    style:  TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 17,
-                      color: StyleRepo.darkBlue,
+                      color: context.colors.darkBlue,
                     ),
                   ),
                 ],
@@ -301,17 +301,17 @@ class TaskDetailsPage extends StatelessWidget {
 
               Container(
                 decoration: BoxDecoration(
-                  color: StyleRepo.white,
+                  color: context.colors.white,
 
                   borderRadius: BorderRadius.circular(24),
 
                   border: Border.all(
-                    color: StyleRepo.fieldBorder.withOpacity(.35),
+                    color: context.colors.fieldBorder.withOpacity(.35),
                   ),
 
                   boxShadow: [
                     BoxShadow(
-                      color: StyleRepo.darkBlue.withOpacity(.05),
+                      color: context.colors.darkBlue.withOpacity(.05),
                       blurRadius: 15,
                       offset: const Offset(0, 6),
                     ),
@@ -333,15 +333,15 @@ class TaskDetailsPage extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 14,
                             color: step.isChecked
-                                ? StyleRepo.fieldBorder
-                                : StyleRepo.darkBlue,
+                                ? context.colors.fieldBorder
+                                : context.colors.darkBlue,
                             decoration: step.isChecked
                                 ? TextDecoration.lineThrough
                                 : TextDecoration.none,
                           ),
                         ),
 
-                        activeColor: StyleRepo.middleBlue,
+                        activeColor: context.colors.middleBlue,
 
                         controlAffinity:
                             ListTileControlAffinity.trailing,
@@ -377,21 +377,21 @@ class TaskDetailsPage extends StatelessWidget {
                                 MainAxisAlignment.spaceBetween,
 
                             children: [
-                              const Text(
+                               Text(
                                 "Progress",
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
-                                  color: StyleRepo.darkBlue,
+                                  color: context.colors.darkBlue,
                                 ),
                               ),
 
                               Text(
                                 "${taskDetails.checkedStepsCount}/${taskDetails.steps.length}",
-                                style: const TextStyle(
+                                style:  TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
-                                  color: StyleRepo.middleBlue,
+                                  color: context.colors.middleBlue,
                                 ),
                               ),
                             ],
@@ -407,10 +407,10 @@ class TaskDetailsPage extends StatelessWidget {
 
                             minHeight: 7,
 
-                            color: StyleRepo.middleBlue,
+                            color: context.colors.middleBlue,
 
                             backgroundColor:
-                                StyleRepo.lightBlue,
+                                context.colors.lightBlue,
 
                             borderRadius:
                                 BorderRadius.circular(10),
@@ -477,14 +477,14 @@ class _InfoRow extends StatelessWidget {
           height: 38,
 
           decoration: BoxDecoration(
-            color: StyleRepo.lightBlue,
+            color: context.colors.lightBlue,
             borderRadius: BorderRadius.circular(12),
           ),
 
           child: Icon(
             icon,
             size: 19,
-            color: StyleRepo.darkBlue,
+            color: context.colors.darkBlue,
           ),
         ),
 
@@ -497,9 +497,9 @@ class _InfoRow extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: const TextStyle(
+                style:  TextStyle(
                   fontSize: 11,
-                  color: StyleRepo.fieldBorder,
+                  color: context.colors.fieldBorder,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -511,10 +511,10 @@ class _InfoRow extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
 
-                style: const TextStyle(
+                style:  TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
-                  color: StyleRepo.darkBlue,
+                  color: context.colors.darkBlue,
                 ),
               ),
             ],

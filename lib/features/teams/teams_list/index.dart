@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:task_management_app/core/routes/routes.dart';
 import 'package:task_management_app/core/services/pagination/options/list_view.dart';
 
+import '../../../core/style/app_colors.dart';
 import '../models/team.dart';
 import '../team_details/models/nav.dart';
 import 'controller.dart';
@@ -41,7 +42,7 @@ class TeamsListPage extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Text(
               today,
-              style: const TextStyle(fontSize: 20, color: Colors.grey),
+              style:  TextStyle(fontSize: 20, color: context.colors.fieldBorder),
             ),
           ),
         ),

@@ -161,9 +161,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:task_management_app/core/style/repo.dart';
 import 'package:task_management_app/core/widgets/buttons/elevated_button.dart';
 import 'package:task_management_app/features/timer/controller.dart';
+
+import '../../core/style/app_colors.dart';
 
 class TimerPage extends StatelessWidget {
   final dynamic task;
@@ -179,15 +180,15 @@ class TimerPage extends StatelessWidget {
         Get.put(PomodoroController());
 
     return Scaffold(
-      backgroundColor: StyleRepo.white,
+      backgroundColor: context.colors.white,
 
       appBar: AppBar(
-        title: const Text(
+        title:  Text(
           "Pomodoro",
           style: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.bold,
-            color: StyleRepo.darkBlue,
+            color: context.colors.darkBlue,
           ),
         ),
         centerTitle: true,
@@ -217,17 +218,17 @@ class TimerPage extends StatelessWidget {
                         child: CircularProgressIndicator(
                           value: controller.progress,
                           strokeWidth: 12,
-                          backgroundColor: StyleRepo.lightBlue,
-                          color: StyleRepo.middleBlue,
+                          backgroundColor: context.colors.lightBlue,
+                          color: context.colors.middleBlue,
                         ),
                       ),
 
                       Container(
                         width: 235,
                         height: 235,
-                        decoration: const BoxDecoration(
+                        decoration:  BoxDecoration(
                           shape: BoxShape.circle,
-                          color: StyleRepo.white,
+                          color: context.colors.white,
                         ),
                         child: Column(
                           mainAxisAlignment:
@@ -235,10 +236,10 @@ class TimerPage extends StatelessWidget {
                           children: [
                             Text(
                               controller.stateLabel,
-                              style: const TextStyle(
+                              style:  TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
-                                color: StyleRepo.middleBlue,
+                                color: context.colors.middleBlue,
                               ),
                             ),
 
@@ -246,10 +247,10 @@ class TimerPage extends StatelessWidget {
 
                             Text(
                               controller.formattedTime,
-                              style: const TextStyle(
+                              style:  TextStyle(
                                 fontSize: 48,
                                 fontWeight: FontWeight.bold,
-                                color: StyleRepo.darkBlue,
+                                color: context.colors.darkBlue,
                               ),
                             ),
 
@@ -257,9 +258,9 @@ class TimerPage extends StatelessWidget {
 
                             Text(
                               "Session ${controller.sessionCount.value + 1}",
-                              style: const TextStyle(
+                              style:  TextStyle(
                                 fontSize: 13,
-                                color: StyleRepo.fieldBorder,
+                                color: context.colors.fieldBorder,
                               ),
                             ),
                           ],
@@ -278,9 +279,9 @@ class TimerPage extends StatelessWidget {
                     Container(
                       width: 58,
                       height: 58,
-                      decoration: const BoxDecoration(
+                      decoration:  BoxDecoration(
                         shape: BoxShape.circle,
-                        color: StyleRepo.darkBlue,
+                        color: context.colors.darkBlue,
                       ),
                       child: IconButton(
                         onPressed: controller.toggleTimer,
@@ -288,7 +289,7 @@ class TimerPage extends StatelessWidget {
                           controller.isRunning.value
                               ? Icons.pause_rounded
                               : Icons.play_arrow_rounded,
-                          color: StyleRepo.white,
+                          color: context.colors.white,
                           size: 30,
                         ),
                       ),
@@ -299,15 +300,15 @@ class TimerPage extends StatelessWidget {
                     Container(
                       width: 58,
                       height: 58,
-                      decoration: const BoxDecoration(
+                      decoration:  BoxDecoration(
                         shape: BoxShape.circle,
-                        color: StyleRepo.lightBlue,
+                        color: context.colors.lightBlue,
                       ),
                       child: IconButton(
                         onPressed: controller.reset,
-                        icon: const Icon(
+                        icon:  Icon(
                           Icons.refresh_rounded,
-                          color: StyleRepo.darkBlue,
+                          color: context.colors.darkBlue,
                           size: 27,
                         ),
                       ),
@@ -327,7 +328,7 @@ class TimerPage extends StatelessWidget {
                         .titleMedium
                         ?.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: StyleRepo.darkBlue,
+                          color: context.colors.darkBlue,
                         ),
                   ),
                 ),
@@ -336,9 +337,9 @@ class TimerPage extends StatelessWidget {
 
                 Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.all(18),
+                  padding:  EdgeInsets.all(18),
                   decoration: BoxDecoration(
-                    color: StyleRepo.lightBlue,
+                    color: context.colors.lightBlue,
                     borderRadius: BorderRadius.circular(22),
                   ),
                   child: Column(
@@ -347,10 +348,10 @@ class TimerPage extends StatelessWidget {
                     children: [
                       Text(
                         task.name,
-                        style: const TextStyle(
+                        style:  TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: StyleRepo.darkBlue,
+                          color: context.colors.darkBlue,
                         ),
                       ),
 
@@ -410,15 +411,15 @@ class _TaskInfoRow extends StatelessWidget {
         Icon(
           icon,
           size: 18,
-          color: StyleRepo.middleBlue,
+          color: context.colors.middleBlue,
         ),
         const SizedBox(width: 8),
         Expanded(
           child: Text(
             text,
-            style: const TextStyle(
+            style:  TextStyle(
               fontSize: 14,
-              color: StyleRepo.darkBlue,
+              color: context.colors.darkBlue,
             ),
           ),
         ),

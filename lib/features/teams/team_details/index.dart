@@ -4,8 +4,8 @@ import 'package:easy_localization/easy_localization.dart';
 
 import 'package:task_management_app/core/routes/routes.dart';
 import 'package:task_management_app/core/services/state_management/obs_builder.dart';
-import 'package:task_management_app/core/style/repo.dart';
 
+import '../../../core/style/app_colors.dart';
 import '../../tasks/models/task_card.dart';
 import '../../tasks/task_details/models/nav.dart';
 import 'controller.dart';
@@ -45,10 +45,10 @@ class TeamDetailsPage extends StatelessWidget {
                     children: [
                       Text(
                         teamDetails.managerName,
-                        style: const TextStyle(
+                        style:  TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
-                          color: StyleRepo.darkBlue,
+                          color: context.colors.darkBlue,
                         ),
                       ),
                       const Divider(height: 32, indent: 60, endIndent: 60),
@@ -60,7 +60,7 @@ class TeamDetailsPage extends StatelessWidget {
                         "team_details.remaining_tasks_message".tr(
                           args: [teamDetails.pendingTasksCount.toString()],
                         ),
-                        style: TextStyle(color: StyleRepo.black.withOpacity(.5)),
+                        style: TextStyle(color: context.colors.black.withOpacity(.5)),
                         textAlign: TextAlign.center,
                       ),
                     ],

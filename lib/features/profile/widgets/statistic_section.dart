@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:task_management_app/features/profile/models/profile_state.dart';
 
-import '../../../core/style/repo.dart';
+import '../../../core/style/app_colors.dart';
+
 
 class StatisticsSection extends StatelessWidget {
   final ProfileStats stats;
@@ -17,12 +18,12 @@ class StatisticsSection extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 28),
       child: Column(
         children: [
-          const Text(
+           Text(
             "Statistics",
             style: TextStyle(
               fontSize: 17,
               fontWeight: FontWeight.w500,
-              color: StyleRepo.darkBlue,
+              color: context.colors.darkBlue,
             ),
           ),
 
@@ -58,7 +59,7 @@ class StatisticsSection extends StatelessWidget {
               "Learn more about scores",
               style: TextStyle(
                 fontSize: 9,
-                color: StyleRepo.fieldBorder,
+                color: context.colors.fieldBorder,
                 decoration: TextDecoration.underline,
               ),
             ),
@@ -90,14 +91,14 @@ class _StatisticsBlock extends StatelessWidget {
           height: 42,
           decoration: BoxDecoration(
             border: Border.all(
-              color: StyleRepo.darkBlue,
+              color: context.colors.darkBlue,
               width: 3,
             ),
             borderRadius: BorderRadius.circular(14),
           ),
           child: Icon(
             icon,
-            color: StyleRepo.darkBlue,
+            color: context.colors.darkBlue,
             size: 23,
           ),
         ),
@@ -110,9 +111,9 @@ class _StatisticsBlock extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: const TextStyle(
+                style:  TextStyle(
                   fontSize: 16,
-                  color: StyleRepo.darkBlue,
+                  color: context.colors.darkBlue,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -124,9 +125,9 @@ class _StatisticsBlock extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 7),
                   child: Text(
                     text,
-                    style: const TextStyle(
+                    style:  TextStyle(
                       fontSize: 10,
-                      color: StyleRepo.fieldBorder,
+                      color: context.colors.fieldBorder,
                     ),
                   ),
                 ),

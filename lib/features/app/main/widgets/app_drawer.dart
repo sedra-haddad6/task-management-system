@@ -1,10 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide Trans;
-
+import '../../../../core/style/app_colors.dart'; 
 import '../../../../core/config/app_builder.dart';
 import '../../../../core/services/theme/controller.dart';
-import '../../../../core/style/repo.dart';
 import '../../../profile/widgets/profile_header.dart';
 import 'language_bottom_sheet.dart';
 
@@ -18,7 +17,7 @@ class AppDrawer extends StatelessWidget {
     final ThemeController themeController = Get.find<ThemeController>();
 
     return Drawer(
-      backgroundColor: StyleRepo.green,
+      backgroundColor: context.colors.green,
       child: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -30,7 +29,11 @@ class AppDrawer extends StatelessWidget {
               imageUrl: appBuilder.userImage,
             ),
 
-             Divider(height: 1, thickness: 1, color: StyleRepo.grey),
+             Divider(
+  height: 1,
+  thickness: 1,
+  color: context.colors.grey,
+),
 
             _DrawerItem(
               icon: Icons.settings_outlined,
@@ -87,7 +90,7 @@ class _DrawerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final textStyle = TextStyle(
       fontSize: 15,
-      color: StyleRepo.black.withOpacity(.6),
+      color: context.colors.black.withOpacity(.6),
     );
 
     return InkWell(
@@ -96,14 +99,14 @@ class _DrawerItem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 18),
         decoration:  BoxDecoration(
           border: Border(
-            bottom: BorderSide(color: StyleRepo.grey, width: 1),
+            bottom: BorderSide(color: context.colors.grey, width: 1),
           ),
         ),
         child: centered
             ? Center(child: Text(label, style: textStyle))
             : Row(
                 children: [
-                  Icon(icon, color: StyleRepo.black.withOpacity(.6)),
+                  Icon(icon, color: context.colors.black.withOpacity(.6)),
                   const SizedBox(width: 14),
                   Text(label, style: textStyle),
                 ],

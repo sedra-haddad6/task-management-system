@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:task_management_app/core/style/repo.dart';
 
+import '../../../../core/style/app_colors.dart';
 import '../../models/team.dart';
 
 class TeamCard extends StatelessWidget {
@@ -19,11 +19,13 @@ class TeamCard extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: StyleRepo.lightBlue,
+          color: context.colors.lightBlue,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.08),
+              color: context.colors.black.withOpacity(0.08)
+
+,
               blurRadius: 6,
               offset: const Offset(0, 3),
             ),
@@ -34,17 +36,17 @@ class TeamCard extends StatelessWidget {
           children: [
             Text(
               team.name,
-              style: const TextStyle(
+              style:  TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
-                color: StyleRepo.darkBlue,
+                color: context.colors.darkBlue,
               ),
             ),
             const SizedBox(height: 6),
             Text(
               "${team.pendingTasksCount} undone",
               style: TextStyle(
-                color: StyleRepo.black.withOpacity(.5),
+                color: context.colors.black.withOpacity(.5),
                 fontSize: 14,
               ),
             ),

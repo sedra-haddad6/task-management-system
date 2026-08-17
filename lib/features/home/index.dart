@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart' hide Trans;
 
-import '../../core/style/repo.dart';
+import '../../core/style/app_colors.dart';
 import '../../core/widgets/buttons/elevated_button.dart';
 import 'controllers/controller.dart';
 
@@ -29,11 +29,11 @@ class HomePage extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: StyleRepo.lightBlue,
+              color: context.colors.lightBlue,
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
       BoxShadow(
-        color: Colors.black.withOpacity(0.12), 
+        color: context.colors.black.withOpacity(0.12), 
         blurRadius: 4,                         
          spreadRadius: 2,                       
         offset: const Offset(0, 8),             
@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
                ,style: TextStyle(
          fontSize: 16,
          height: 1.85,
-            color: StyleRepo.black.withOpacity(.55), 
+            color: context.colors.black, 
   ), ),
           ),
 
@@ -59,8 +59,10 @@ class HomePage extends StatelessWidget {
           const SizedBox(height: 24),
 
 
-          Text(controller.formattedDate,style: TextStyle( fontSize: 17,
-              color: Colors.grey, ) ),
+          Text(controller.formattedDate,
+          style: TextStyle( 
+            fontSize: 17,
+              color: context.colors.fieldBorder, ) ),
 
 
           const Spacer(),
@@ -69,7 +71,7 @@ class HomePage extends StatelessWidget {
           Center(child: Text("home.no_statistics".tr(),
           style: TextStyle(
          fontSize: 16,
-            color: Colors.black, 
+            color: context.colors.black, 
   ),
            
           

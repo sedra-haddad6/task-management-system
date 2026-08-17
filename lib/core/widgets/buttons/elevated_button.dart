@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../style/repo.dart';
+
 
 
 
@@ -34,12 +34,12 @@ class _AppElevatedButtonState extends State<AppElevatedButton> {
     return ElevatedButton(
       onPressed: _onPressed,
       child: _isLoading
-          ? const SizedBox(
+          ?  SizedBox(
               height: 22,
               width: 22,
               child: CircularProgressIndicator(
                 strokeWidth: 2.4,
-                color: StyleRepo.white,
+                color: Theme.of(context).colorScheme.onPrimary,
               ),
             )
           : widget.child,

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_management_app/features/notifications/contoller.dart';
 
-import '../../core/style/repo.dart';
+
+import '../../core/style/app_colors.dart';
 import 'models/notification.dart';
 
 class NotificationsPage extends StatelessWidget {
@@ -14,29 +15,29 @@ class NotificationsPage extends StatelessWidget {
         Get.put(NotificationsController());
 
     return Scaffold(
-      backgroundColor: StyleRepo.white,
+      backgroundColor: context.colors.white,
 
       appBar: AppBar(
-        backgroundColor: StyleRepo.white,
+        backgroundColor: context.colors.white,
         elevation: 0,
 
         centerTitle: true,
 
         leading: IconButton(
           onPressed: () => Get.back(),
-          icon: const Icon(
+          icon:  Icon(
             Icons.arrow_back_ios_new_rounded,
             size: 20,
-            color: StyleRepo.darkBlue,
+            color: context.colors.darkBlue,
           ),
         ),
 
         title: Text(
           "Notifications",
-          style: const TextStyle(
+          style:  TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.bold,
-            color: StyleRepo.darkBlue,
+            color: context.colors.darkBlue,
           ),
         ),
       ),
@@ -44,9 +45,9 @@ class NotificationsPage extends StatelessWidget {
       body: Obx(
         () {
           if (controller.isLoading.value) {
-            return const Center(
+            return  Center(
               child: CircularProgressIndicator(
-                color: StyleRepo.darkBlue,
+                color: context.colors.darkBlue,
               ),
             );
           }
@@ -63,7 +64,7 @@ class NotificationsPage extends StatelessWidget {
           }
 
           return RefreshIndicator(
-            color: StyleRepo.darkBlue,
+            color: context.colors.darkBlue,
 
             onRefresh: controller.refreshNotifications,
 
@@ -129,18 +130,18 @@ class NotificationCard extends StatelessWidget {
 
         decoration: BoxDecoration(
           color: notification.isRead
-              ? StyleRepo.white
-              : StyleRepo.lightBlue,
+              ? context.colors.white
+              : context.colors.lightBlue,
 
           borderRadius: BorderRadius.circular(22),
 
           border: Border.all(
-            color: StyleRepo.fieldBorder.withOpacity(.25),
+            color: context.colors.fieldBorder.withOpacity(.25),
           ),
 
           boxShadow: [
             BoxShadow(
-              color: StyleRepo.darkBlue.withOpacity(.05),
+              color: context.colors.darkBlue.withOpacity(.05),
               blurRadius: 12,
               offset: const Offset(0, 5),
             ),
@@ -157,14 +158,14 @@ class NotificationCard extends StatelessWidget {
               width: 48,
               height: 48,
 
-              decoration: const BoxDecoration(
-                color: StyleRepo.white,
+              decoration:  BoxDecoration(
+                color: context.colors.white,
                 shape: BoxShape.circle,
               ),
 
-              child: const Icon(
+              child:  Icon(
                 Icons.notifications_none_rounded,
-                color: StyleRepo.middleBlue,
+                color: context.colors.middleBlue,
                 size: 25,
               ),
             ),
@@ -195,7 +196,7 @@ class NotificationCard extends StatelessWidget {
                                 notification.isRead
                                     ? FontWeight.w600
                                     : FontWeight.bold,
-                            color: StyleRepo.darkBlue,
+                            color: context.colors.darkBlue,
                           ),
                         ),
                       ),
@@ -212,8 +213,8 @@ class NotificationCard extends StatelessWidget {
                           ),
 
                           decoration:
-                              const BoxDecoration(
-                            color: StyleRepo.middleBlue,
+                               BoxDecoration(
+                            color: context.colors.middleBlue,
                             shape: BoxShape.circle,
                           ),
                         ),
@@ -228,10 +229,10 @@ class NotificationCard extends StatelessWidget {
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
 
-                    style: const TextStyle(
+                    style:  TextStyle(
                       fontSize: 13,
                       height: 1.4,
-                      color: StyleRepo.black,
+                      color: context.colors.black,
                     ),
                   ),
 
@@ -240,9 +241,9 @@ class NotificationCard extends StatelessWidget {
 
                     Text(
                       notification.createdAt!,
-                      style: const TextStyle(
+                      style:  TextStyle(
                         fontSize: 11,
-                        color: StyleRepo.fieldBorder,
+                        color: context.colors.fieldBorder,
                       ),
                     ),
                   ],
@@ -280,15 +281,15 @@ class _EmptyNotifications extends StatelessWidget {
               width: 90,
               height: 90,
 
-              decoration: const BoxDecoration(
-                color: StyleRepo.lightBlue,
+              decoration:  BoxDecoration(
+                color: context.colors.lightBlue,
                 shape: BoxShape.circle,
               ),
 
-              child: const Icon(
+              child:  Icon(
                 Icons.notifications_none_rounded,
                 size: 45,
-                color: StyleRepo.middleBlue,
+                color: context.colors.middleBlue,
               ),
             ),
 
@@ -299,10 +300,10 @@ class _EmptyNotifications extends StatelessWidget {
 
               textAlign: TextAlign.center,
 
-              style: const TextStyle(
+              style:  TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.bold,
-                color: StyleRepo.darkBlue,
+                color: context.colors.darkBlue,
               ),
             ),
 
@@ -313,9 +314,9 @@ class _EmptyNotifications extends StatelessWidget {
 
               textAlign: TextAlign.center,
 
-              style: const TextStyle(
+              style:  TextStyle(
                 fontSize: 13,
-                color: StyleRepo.fieldBorder,
+                color: context.colors.fieldBorder,
               ),
             ),
           ],
@@ -351,10 +352,10 @@ class _ErrorState extends StatelessWidget {
 
           children: [
 
-            const Icon(
+             Icon(
               Icons.error_outline_rounded,
               size: 55,
-              color: StyleRepo.error,
+              color: context.colors.error,
             ),
 
             const SizedBox(height: 15),
@@ -363,9 +364,9 @@ class _ErrorState extends StatelessWidget {
               message,
               textAlign: TextAlign.center,
 
-              style: const TextStyle(
+              style:  TextStyle(
                 fontSize: 14,
-                color: StyleRepo.darkBlue,
+                color: context.colors.darkBlue,
               ),
             ),
 

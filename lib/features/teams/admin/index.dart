@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../core/style/repo.dart';
+import '../../../core/style/app_colors.dart';
 import '../../../core/widgets/buttons/elevated_button.dart';
 import 'controller.dart';
 
@@ -26,10 +26,10 @@ class WebDashboardPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
 
-              const Icon(
+               Icon(
                 Icons.laptop_mac_rounded,
                 size: 90,
-                color: StyleRepo.darkBlue,
+                color: context.colors.darkBlue,
               ),
 
               const SizedBox(height: 35),
@@ -73,18 +73,18 @@ class WebDashboardPage extends StatelessWidget {
                 padding: const EdgeInsets.all(18),
 
                 decoration: BoxDecoration(
-                  color: StyleRepo.lightBlue,
+                  color: context.colors.lightBlue,
                   borderRadius: BorderRadius.circular(20),
                 ),
 
-                child: const Column(
+                child:  Column(
                   children: [
 
                     Row(
                       children: [
                         Icon(
                           Icons.groups_outlined,
-                          color: StyleRepo.darkBlue,
+                          color: context.colors.darkBlue,
                         ),
                         SizedBox(width: 10),
                         Text("Manage Teams"),
@@ -97,7 +97,7 @@ class WebDashboardPage extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.task_alt,
-                          color: StyleRepo.darkBlue,
+                          color: context.colors.darkBlue,
                         ),
                         SizedBox(width: 10),
                         Text("Manage Tasks"),
@@ -110,7 +110,7 @@ class WebDashboardPage extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.people_alt_outlined,
-                          color: StyleRepo.darkBlue,
+                          color: context.colors.darkBlue,
                         ),
                         SizedBox(width: 10),
                         Text("Manage Members"),
@@ -123,7 +123,7 @@ class WebDashboardPage extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.analytics_outlined,
-                          color: StyleRepo.darkBlue,
+                          color: context.colors.darkBlue,
                         ),
                         SizedBox(width: 10),
                         Text("View Reports"),

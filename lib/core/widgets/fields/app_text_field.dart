@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../style/repo.dart';
+import '../../style/app_colors.dart';
 
 class AppTextField extends StatefulWidget {
   final TextEditingController controller;
@@ -49,10 +48,10 @@ class _AppTextFieldState extends State<AppTextField> {
         if (widget.label != null) ...[
           Text(
             widget.label!,
-            style: const TextStyle(
+            style:  TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
-              color: StyleRepo.black,
+             color: context.colors.black,
             ),
           ),
 
@@ -68,7 +67,7 @@ class _AppTextFieldState extends State<AppTextField> {
           decoration: InputDecoration(
             hintText: widget.hint,
             prefixIcon: widget.prefixIcon,
-            prefixIconColor: StyleRepo.fieldBorder,
+            prefixIconColor: context.colors.fieldBorder,
             
             suffixIcon: widget.isPassword
                 ? IconButton(

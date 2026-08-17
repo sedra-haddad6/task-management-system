@@ -4,8 +4,8 @@ import 'package:easy_localization/easy_localization.dart';
 
 import 'package:task_management_app/core/routes/routes.dart';
 import 'package:task_management_app/core/services/pagination/options/list_view.dart';
-import 'package:task_management_app/core/style/repo.dart';
 
+import '../../../core/style/app_colors.dart';
 import '../models/task.dart';
 import '../models/task_card.dart';
 import '../task_details/models/nav.dart';
@@ -100,14 +100,14 @@ class _FilterChip extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
         decoration: BoxDecoration(
-          color: isSelected ? StyleRepo.middleBlue : StyleRepo.green,
+          color: isSelected ? context.colors.middleBlue : context.colors.green,
           borderRadius: BorderRadius.circular(20),
         ),
         child: Text(
           label,
           style: TextStyle(
             fontSize: 13,
-            color: isSelected ? StyleRepo.white : StyleRepo.black,
+            color: isSelected ? context.colors.white : context.colors.black,
           ),
         ),
       ),
