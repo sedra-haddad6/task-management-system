@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-
+import '../widgets/loading/loading.dart';
 import 'roles.dart';
 import '../routes/routes.dart';
 import '../services/rest_api/rest_api.dart';
@@ -105,15 +105,31 @@ class AppBuilder extends GetxService {
 
   // ================= LOGOUT =================
 
-  Future<void> logout() async {
-    setRole(Roles.unregisteredUser);
-    setToken(null);
-    setUser(null);
+Future<void> logout() async {
+  Loading.show();
 
-    Get.offAllNamed(
-      role.landingPage.value,
-    );
+  ResponseModel response = await APIService.instance.request(
+    Request(
+      endPoint: EndPoints.logout,
+      method: RequestMethod.post,
+    ),
+  );
+
+  Loading.close();
+
+  if (!response.success) {
+    Get.snackbar("", response.message);
+    return;
   }
+
+  setRole(Roles.unregisteredUser);
+  setToken(null);
+  setUser(null);
+
+  Get.offAllNamed(
+    role.landingPage.value,
+  );
+}
 
   // ================= INIT =================
 
