@@ -1,16 +1,20 @@
-import 'package:get/get.dart';
+import 'dart:developer';
 
-import '../../core/services/rest_api/rest_api.dart';
+import 'package:get/get.dart';
+import 'package:task_management_app/features/notifications/services/rest_api.dart';
+
 import 'models/notification.dart';
 
 class NotificationsController extends GetxController {
-  final notifications = <AppNotification>[].obs;
+  final NotificationService service = NotificationService();
 
-  final isLoading = false.obs;
+  final RxList<AppNotification> notifications =
+      <AppNotification>[].obs;
 
-  final hasError = false.obs;
+  final RxBool isLoading = false.obs;
+  final RxBool hasError = false.obs;
 
-  final errorMessage = ''.obs;
+  final RxString errorMessage = ''.obs;
 
   @override
   void onInit() {
@@ -20,74 +24,118 @@ class NotificationsController extends GetxController {
   }
 
   Future<void> loadNotifications() async {
-    isLoading.value = true;
-    hasError.value = false;
+    try {
+      isLoading.value = true;
+      hasError.value = false;
+      errorMessage.value = '';
 
-    final ResponseModel response =
-        await APIService.instance.request(
-      Request(
-        endPoint: EndPoints.notifications,
-        method: RequestMethod.get,
-      ),
-    );
+      final response = await service.getNotifications();
 
-    isLoading.value = false;
+      log(
+        'Notifications response: ${response.toJson()}',
+        name: 'NOTIFICATIONS',
+      );
 
-    if (response.success) {
-      final data = response.data;
-
-      if (data is List) {
-        notifications.assignAll(
-          data
-              .whereType<Map<String, dynamic>>()
-              .map(
-                (json) => AppNotification.fromJson(json),
-              )
-              .toList(),
-        );
-      } else if (data is Map<String, dynamic>) {
-        final list = data['notifications'];
-
-        if (list is List) {
-          notifications.assignAll(
-            list
-                .whereType<Map<String, dynamic>>()
-                .map(
-                  (json) =>
-                      AppNotification.fromJson(json),
-                )
-                .toList(),
-          );
-        }
+      if (!response.success) {
+        _handleError(response.message);
+        return;
       }
-    } else {
-      hasError.value = true;
-      errorMessage.value = response.message;
+
+      final List<AppNotification> result =
+          _parseNotifications(response.data);
+
+      notifications.assignAll(result);
+    } catch (e, stackTrace) {
+      log(
+        'Notifications error: $e',
+        name: 'NOTIFICATIONS',
+        stackTrace: stackTrace,
+      );
+
+      _handleError(
+        'Unable to load notifications',
+      );
+    } finally {
+      isLoading.value = false;
     }
+  }
+
+  List<AppNotification> _parseNotifications(dynamic data) {
+    if (data == null) {
+      return [];
+    }
+
+    /*
+     * Case 1:
+     *
+     * data = [
+     *   {...},
+     *   {...}
+     * ]
+     */
+    if (data is List) {
+      return data
+          .whereType<Map>()
+          .map(
+            (item) => AppNotification.fromJson(
+              Map<String, dynamic>.from(item),
+            ),
+          )
+          .toList();
+    }
+
+    /*
+     * Case 2:
+     *
+     * data = {
+     *   "notifications": [...]
+     * }
+     */
+    if (data is Map) {
+      final notificationsData = data['notifications'];
+
+      if (notificationsData is List) {
+        return notificationsData
+            .whereType<Map>()
+            .map(
+              (item) => AppNotification.fromJson(
+                Map<String, dynamic>.from(item),
+              ),
+            )
+            .toList();
+      }
+
+      /*
+       * Case 3:
+       *
+       * data = {
+       *   "data": [...]
+       * }
+       */
+      final nestedData = data['data'];
+
+      if (nestedData is List) {
+        return nestedData
+            .whereType<Map>()
+            .map(
+              (item) => AppNotification.fromJson(
+                Map<String, dynamic>.from(item),
+              ),
+            )
+            .toList();
+      }
+    }
+
+    return [];
+  }
+
+  void _handleError(String message) {
+    hasError.value = true;
+    errorMessage.value =
+        message.isEmpty ? 'Something went wrong' : message;
   }
 
   Future<void> refreshNotifications() async {
     await loadNotifications();
-  }
-
-  Future<void> markAsRead(int notificationId) async {
-    // سيتم ربطها بالـ backend عندما يعطينا الفريق endpoint
-    // الخاص بتحديث حالة الإشعار.
-
-    final index = notifications.indexWhere(
-      (notification) => notification.id == notificationId,
-    );
-
-    if (index == -1) return;
-
-    final oldNotification = notifications[index];
-
-    notifications[index] = AppNotification(
-      id: oldNotification.id,
-      title: oldNotification.title,
-      message: oldNotification.message,
-      createdAt: oldNotification.createdAt,
-      isRead: true,
-    );
   }
 }

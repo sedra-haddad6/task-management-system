@@ -3,9 +3,8 @@ import 'package:get/get.dart';
 import 'package:task_management_app/features/profile/widgets/statistic_section.dart';
 
 import '../../core/config/app_builder.dart';
+import '../../core/style/repo.dart';
 
-
-import '../../core/style/app_colors.dart';
 import 'controller.dart';
 import 'widgets/profile_header.dart';
 
@@ -14,59 +13,93 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ProfilePageController());
+    final controller = Get.put(
+      ProfilePageController(),
+    );
 
     final AppBuilder appBuilder = Get.find<AppBuilder>();
 
     return Scaffold(
-      backgroundColor: context.colors.white,
+      backgroundColor: StyleRepo.white,
 
       body: SafeArea(
-        child: Obx(
-          () {
-            final stats = controller.stats.value;
+        child: Column(
+          children: [
+            ProfileHeader(
+              name: appBuilder.userName ?? "",
+              email: appBuilder.userEmail ?? "",
+              imageUrl: appBuilder.userImage,
+            ),
 
-            return Column(
-              children: [
-                ProfileHeader(
-                  name: appBuilder.userName ?? "User",
-                  email: appBuilder.userEmail ?? "",
-                  imageUrl: appBuilder.userImage,
-                ),
+            Container(
+              height: 1,
+              color: StyleRepo.grey,
+            ),
 
-                Container(
-                  height: 1,
-                  color: context.colors.grey,
-                ),
+            Expanded(
+              child: Obx(
+                () {
+                  // Loading
+                  if (controller.isLoading.value &&
+                      controller.stats.value == null) {
+                    return const Center(
+                      child: CircularProgressIndicator(
+                        color: StyleRepo.darkBlue,
+                      ),
+                    );
+                  }
 
-                Expanded(
-                  child: controller.isLoading.value && stats == null
-                      ?  Center(
-                          child: CircularProgressIndicator(
-                           color: context.colors.darkBlue,
+                  // Statistics successfully loaded
+                  if (controller.stats.value != null) {
+                    return ListView(
+                      padding: const EdgeInsets.only(
+                        top: 25,
+                        bottom: 30,
+                      ),
+                      children: [
+                        StatisticsSection(
+                          stats: controller.stats.value!,
+                        ),
+                      ],
+                    );
+                  }
+
+                  // API failed
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.bar_chart_outlined,
+                          size: 45,
+                          color: StyleRepo.fieldBorder,
+                        ),
+
+                        const SizedBox(height: 12),
+
+                        const Text(
+                          "Statistics are not available",
+                          style: TextStyle(
+                            color: StyleRepo.darkBlue,
+                            fontSize: 15,
                           ),
-                        )
-                      : stats == null
-                          ? const Center(
-                              child: Text(
-                                "No statistics available",
-                              ),
-                            )
-                          : ListView(
-                              padding: const EdgeInsets.only(
-                                top: 25,
-                                bottom: 30,
-                              ),
-                              children: [
-                                StatisticsSection(
-                                  stats: stats,
-                                ),
-                              ],
-                            ),
-                ),
-              ],
-            );
-          },
+                        ),
+
+                        const SizedBox(height: 15),
+
+                        TextButton(
+                          onPressed: controller.loadProfileStats,
+                          child: const Text(
+                            "Try again",
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );
