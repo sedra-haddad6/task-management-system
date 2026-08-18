@@ -69,7 +69,7 @@
     "logout": "Logout"
   },
   "teams": {
-    "my_projects": "My Projects"
+    "my_projects": "My Teams"
   },
   "team_details": {
     "score": "{} scores",

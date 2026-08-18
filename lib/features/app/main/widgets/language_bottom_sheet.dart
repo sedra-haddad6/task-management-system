@@ -22,20 +22,30 @@ void showLanguageBottomSheet(BuildContext context) {
             _LanguageOption(
               label: "English",
               isSelected: sheetContext.locale.languageCode == 'en',
-              onTap: () {
-                sheetContext.setLocale(const Locale('en'));
-                 Get.updateLocale(const Locale('en'));
-                Navigator.pop(sheetContext);
-              },
+              onTap: () async {
+  await sheetContext.setLocale(const Locale('en'));
+  Get.updateLocale(const Locale('en'));
+  Get.forceAppUpdate();
+  if (sheetContext.mounted) {
+    Navigator.pop(sheetContext);
+  }
+},
             ),
 
             _LanguageOption(
               label: "العربية",
               isSelected: sheetContext.locale.languageCode == 'ar',
-              onTap: () {
-                sheetContext.setLocale(const Locale('ar'));
-                Get.updateLocale(const Locale('ar'));
-                Navigator.pop(sheetContext);
+              onTap: () async {
+                await sheetContext.setLocale(
+                  const Locale('ar'),
+                );
+                Get.updateLocale(
+                  const Locale('ar'),
+                );
+                Get.forceAppUpdate();
+                if (sheetContext.mounted) {
+                  Navigator.pop(sheetContext);
+                }
               },
             ),
 
