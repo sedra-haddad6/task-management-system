@@ -19,7 +19,8 @@ Future<void> main() async {
       supportedLocales: const [Locale('en'), Locale('ar')],
       path: 'assets/translations',
       fallbackLocale:  Locale('en'),
-      startLocale: const Locale('en'),
+      saveLocale: true,
+      // startLocale: const Locale('en'),
 
       // TODO بس يصير في زر تغيير اللغة منضيفه 
       // عن طريق: context.setLocale(Locale('ar'));
