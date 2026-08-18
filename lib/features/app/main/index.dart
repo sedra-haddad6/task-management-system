@@ -28,18 +28,18 @@ class MainPage extends StatelessWidget {
         elevation: 0,
 
       ),
-      drawer: const AppDrawer(),
+      drawer:  AppDrawer(),
   
       bottomNavigationBar: const BottomNavBar(),
       body: SafeArea(       
     child: Obx(
         () => switch (controller.destination.value) {
-          HomeDestination.home => const HomePage(),
-          HomeDestination.teams => const TeamsListPage(),
-          HomeDestination.tasks => const TasksListPage(),
-          HomeDestination.notifications => const NotificationsPage(),
-          HomeDestination.profile => const ProfilePage(),
-          //TODO بس نعمل باقي الصفحات 
+          HomeDestination.home =>  HomePage(),
+          HomeDestination.teams =>  TeamsListPage(),
+          HomeDestination.tasks =>  TasksListPage(),
+          HomeDestination.notifications =>  NotificationsPage(),
+          HomeDestination.profile =>  ProfilePage(),
+          
 
 
         },

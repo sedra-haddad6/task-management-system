@@ -21,7 +21,7 @@ class TeamsListPage extends StatelessWidget {
       TeamsListPageController(),
     );
 
-    final String today = DateFormat('EEE d/M/yyyy').format(DateTime.now());
+    final String today = DateFormat('EEE d/M/yyyy', context.locale.toString()).format(DateTime.now());
 
    
     return Column(
@@ -29,7 +29,7 @@ class TeamsListPage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.fromLTRB(24, 30, 24, 8),
           child: Align(
-            alignment: Alignment.centerLeft,
+            alignment: AlignmentDirectional.centerStart,
             child: Text(
               "teams.my_projects".tr(),
               style: Theme.of(context).textTheme.headlineMedium,
@@ -39,7 +39,7 @@ class TeamsListPage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Align(
-            alignment: Alignment.centerLeft,
+            alignment: AlignmentDirectional.centerStart,
             child: Text(
               today,
               style:  TextStyle(fontSize: 20, color: context.colors.fieldBorder),

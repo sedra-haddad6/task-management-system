@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-
+import 'package:intl/intl.dart';
 import '../../../core/routes/routes.dart';
 
 class HomePageController extends GetxController {
@@ -11,14 +11,10 @@ class HomePageController extends GetxController {
 
   String get quoteKey => _quoteKeys[DateTime.now().weekday % _quoteKeys.length];
 
-  static const List<String> _weekdaysShort = [
-    "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun",
-  ];
-
-  String get formattedDate {
-    final now = DateTime.now();
-    final weekday = _weekdaysShort[now.weekday - 1];
-    return "$weekday  ${now.day}/${now.month}/${now.year}";
+  
+String get formattedDate {
+    final locale = Get.locale?.languageCode ?? 'en';
+    return DateFormat('EEE d/M/yyyy', locale).format(DateTime.now());
   }
 
   RxBool hasTeam = false.obs;
