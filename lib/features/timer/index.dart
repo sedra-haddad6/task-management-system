@@ -324,9 +324,10 @@ class TimerPage extends StatelessWidget {
 
                 // Task details
                 Align(
-                  alignment: Alignment.centerLeft,
+                   alignment: AlignmentDirectional.centerStart,
+
                   child: Text(
-                    "Task Details",
+                    "timer.task_details".tr(),
                     style: Theme.of(context)
                         .textTheme
                         .titleMedium
@@ -385,8 +386,8 @@ class TimerPage extends StatelessWidget {
                       controller.stop();
                       Get.back();
                     },
-                    child: const Text(
-                      "Back to Task",
+                    child:  Text(
+                       "timer.back_to_task".tr(),
                     ),
                   ),
                 ),

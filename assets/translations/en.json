@@ -116,7 +116,9 @@
   "work_time": "Work Time",
   "short_break": "Short Break",
   "long_break": "Long Break",
-  "session": "Session {}"
+  "session": "Session {}",
+  "task_details": "Task Details",
+  "back_to_task": "Back to Task"
 },
   "notifications": {
     "title": "Notifications",

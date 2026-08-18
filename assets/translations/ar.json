@@ -116,7 +116,9 @@
   "work_time": "وقت العمل",
   "short_break": "استراحة قصيرة",
   "long_break": "استراحة طويلة",
-  "session": "الجلسة {}"
+  "session": "الجلسة {}",
+  "task_details": "تفاصيل المهمة",
+  "back_to_task": "العودة إلى المهمة"
 },
   "notifications": {
     "title": "الإشعارات",
