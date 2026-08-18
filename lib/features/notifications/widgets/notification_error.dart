@@ -32,7 +32,7 @@ class NotificationError extends StatelessWidget {
             const SizedBox(height: 15),
 
             Text(
-              message,
+              message.tr(),
               textAlign: TextAlign.center,
               style:  TextStyle(
                 color: context.colors.darkBlue,

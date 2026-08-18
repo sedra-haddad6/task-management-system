@@ -53,7 +53,7 @@ class NotificationsController extends GetxController {
       );
 
       _handleError(
-        'Unable to load notifications',
+        'notifications.load_error',
       );
     } finally {
       isLoading.value = false;

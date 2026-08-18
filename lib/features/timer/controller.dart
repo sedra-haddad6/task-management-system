@@ -133,13 +133,13 @@ class PomodoroController extends GetxController {
   String get stateLabel {
     switch (state.value) {
       case PomodoroState.work:
-        return 'Work Time';
+        return 'timer.work_time';
 
       case PomodoroState.shortBreak:
-        return 'Short Break';
+        return 'timer.short_break';
 
       case PomodoroState.longBreak:
-        return 'Long Break';
+        return 'timer.long_break';
     }
   }
 

@@ -6,7 +6,7 @@
   },
   "login": {
     "title": "Welcome back",
-    "subtitle": "Login to continue shopping",
+    "subtitle": "Login to continue managing your tasks",
     "email": "Email",
     "email_hint": "Enter your email",
     "password": "Password",
@@ -14,7 +14,6 @@
     "login_button": "Login",
     "no_account": "Don't have an account?",
     "signup_link": "Sign up"
-    
   },
   "signup": {
     "title": "Create new account",
@@ -52,25 +51,23 @@
     "unknown": "Something went wrong",
     "canceled": "Request canceled"
   },
-  
   "home": {
-  "quote_1": "Every big goal is just a series of small tasks completed one after another, so take today's step and let tomorrow take care of itself.",
-  "quote_2": "Discipline is choosing between what you want now and what you want most, and every completed task brings you closer to what truly matters.",
-  "quote_3": "A team that plans together, communicates clearly, and trusts each other can turn even the most difficult project into a shared success.",
-  "no_statistics": "No statistics yet",
-  "join_team_button": "Join the team",
-  "teams": "Teams",
-  "tasks": "Tasks",
-  "notifications": "Notifications",
-  "profile": "Profile"
-},
-"drawer": {
-  "settings": "Settings",
-  "language": "Language",
-  "theme": "Theme",
-  "logout": "Logout"
-},
-
+    "quote_1": "Every big goal is just a series of small tasks completed one after another, so take today's step and let tomorrow take care of itself.",
+    "quote_2": "Discipline is choosing between what you want now and what you want most, and every completed task brings you closer to what truly matters.",
+    "quote_3": "A team that plans together, communicates clearly, and trusts each other can turn even the most difficult project into a shared success.",
+    "no_statistics": "No statistics yet",
+    "join_team_button": "Join the team",
+    "teams": "Teams",
+    "tasks": "Tasks",
+    "notifications": "Notifications",
+    "profile": "Profile"
+  },
+  "drawer": {
+    "settings": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "logout": "Logout"
+  },
   "teams": {
     "my_projects": "My Projects"
   },
@@ -101,44 +98,45 @@
     "go_back_to_tasks": "Go Back To Tasks"
   },
   "pagination": {
-  "loading": "Loading",
-  "retry": "Retry",
-  "default_error": "Something went wrong"
+    "loading": "Loading",
+    "retry": "Retry",
+    "default_error": "Something went wrong"
+  },
+  "admin": {
+    "welcome": "Welcome Admin",
+    "dashboard_description": "Your dashboard is available on the web.\nUse it to manage teams, members and tasks.",
+    "open_dashboard": "Open Dashboard",
+    "manage_teams": "Manage Teams",
+    "manage_tasks": "Manage Tasks",
+    "manage_members": "Manage Members",
+    "view_reports": "View Reports"
+  },
+  "timer": {
+  "pomodoro": "Pomodoro",
+  "work_time": "Work Time",
+  "short_break": "Short Break",
+  "long_break": "Long Break",
+  "session": "Session {}"
 },
-"admin": {
-  "welcome": "Welcome Admin",
-  "dashboard_description": "Your dashboard is available on the web.\nUse it to manage teams, members and tasks.",
-  "open_dashboard": "Open Dashboard",
-  "manage_teams": "Manage Teams",
-  "manage_tasks": "Manage Tasks",
-  "manage_members": "Manage Members",
-  "view_reports": "View Reports"
-},
-"notifications": {
-  "title": "Notifications",
-  "empty_title": "No notifications yet",
-  "empty_subtitle": "You will see your notifications here.",
-  "retry": "Try again"
-},
-"profile": {
-  "statistics_title": "Statistics",
-  "not_available": "Statistics are not available",
-  "retry": "Try again",
-  "tasks_title": "Tasks",
-  "tasks_done": " tasks done",
-  "tasks_in_progress": "tasks in progress",
-  "tasks_pending": " tasks pending",
-  "scores_title": "Scores",
-  "current_score": "current score",
-  "lost_score": " lost  score",
-  "reward_hint": "Can get a reward!",
-  "learn_more_scores": "Learn more about scores"
+  "notifications": {
+    "title": "Notifications",
+    "empty_title": "No notifications yet",
+    "empty_subtitle": "You will see your notifications here.",
+    "retry": "Try again",
+    "load_error": "Unable to load notifications"
+  },
+  "profile": {
+    "statistics_title": "Statistics",
+    "not_available": "Statistics are not available",
+    "retry": "Try again",
+    "tasks_title": "Tasks",
+    "tasks_done": "{} tasks done",
+    "tasks_in_progress": "{} tasks in progress",
+    "tasks_pending": "{} tasks pending",
+    "scores_title": "Scores",
+    "current_score": "You have {} scores",
+    "lost_score": "You lost {} score",
+    "reward_hint": "Can get a reward!",
+    "learn_more_scores": "Learn more about scores"
+  }
 }
-}
-
-  
-
-
-
-
-  

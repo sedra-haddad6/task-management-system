@@ -159,8 +159,8 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
+import 'package:get/get.dart' hide Trans;
+import 'package:easy_localization/easy_localization.dart';
 import 'package:task_management_app/core/widgets/buttons/elevated_button.dart';
 import 'package:task_management_app/features/timer/controller.dart';
 
@@ -235,7 +235,7 @@ class TimerPage extends StatelessWidget {
                               MainAxisAlignment.center,
                           children: [
                             Text(
-                              controller.stateLabel,
+                               controller.stateLabel.tr(),
                               style:  TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
@@ -257,7 +257,11 @@ class TimerPage extends StatelessWidget {
                             const SizedBox(height: 5),
 
                             Text(
-                              "Session ${controller.sessionCount.value + 1}",
+  'timer.session'.tr(
+    args: [
+      '${controller.sessionCount.value + 1}',
+    ],
+  ),
                               style:  TextStyle(
                                 fontSize: 13,
                                 color: context.colors.fieldBorder,

@@ -34,9 +34,10 @@ class StatisticsSection extends StatelessWidget {
             icon: Icons.school_outlined,
             title: 'profile.tasks_title'.tr(),
             children: [
-              "${stats.completedTasks} tasks done",
-              "${stats.inProgressTasks} tasks in progress",
-              "${stats.pendingTasks} tasks pending",
+              // Using args to inject the number into the {} placeholder from the json file
+              'profile.tasks_done'.tr(args: [stats.completedTasks.toString()]),
+              'profile.tasks_in_progress'.tr(args: [stats.inProgressTasks.toString()]),
+              'profile.tasks_pending'.tr(args: [stats.pendingTasks.toString()]),
             ],
           ),
 
@@ -46,8 +47,8 @@ class StatisticsSection extends StatelessWidget {
             icon: Icons.school_outlined,
             title: 'profile.scores_title'.tr(),
             children: [
-              "You have ${stats.currentScore} scores",
-              "You lost ${stats.lostScore} score",
+              'profile.current_score'.tr(args: [stats.currentScore.toString()]),
+              'profile.lost_score'.tr(args: [stats.lostScore.toString()]),
               'profile.reward_hint'.tr(),
             ],
           ),

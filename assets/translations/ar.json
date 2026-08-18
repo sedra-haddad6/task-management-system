@@ -1,42 +1,41 @@
 {
   "app_name": "تاسك",
   "splash": {
-    "welcome_to": "أهلاً بك ",
+    "welcome_to": "مرحباً بك",
     "tagline": "لحياة منتجة"
   },
   "login": {
-    "title": "أهلاً فيك من جديد",
-    "subtitle": "سجّل دخولك لتكمل التسوق",
+    "title": "مرحباً بعودتك",
+    "subtitle": "سجّل دخولك لمتابعة مهامك",
     "email": "البريد الإلكتروني",
     "email_hint": "أدخل بريدك الإلكتروني",
-    "password": "كلمة السر",
-    "password_hint": "أدخل كلمة السر",
+    "password": "كلمة المرور",
+    "password_hint": "أدخل كلمة المرور",
     "login_button": "تسجيل الدخول",
-    "no_account": "ما عندك حساب؟",
+    "no_account": "ليس لديك حساب؟",
     "signup_link": "إنشاء حساب"
-
   },
   "signup": {
     "title": "إنشاء حساب جديد",
     "name_hint": "الاسم الكامل",
     "email_hint": "البريد الإلكتروني",
-    "password_hint": "كلمة السر",
-    "confirm_password_hint": "تأكيد كلمة السر",
+    "password_hint": "كلمة المرور",
+    "confirm_password_hint": "تأكيد كلمة المرور",
     "select_role": "اختر نوع الحساب",
     "role_member": "عضو",
     "role_admin": "مدير",
     "signup_button": "إنشاء الحساب",
-    "have_account": "عندك حساب مسبقًا؟",
+    "have_account": "لديك حساب مسبقاً؟",
     "login_link": "تسجيل الدخول"
   },
   "validation": {
-    "required": "هاد الحقل مطلوب",
+    "required": "هذا الحقل مطلوب",
     "invalid_email": "البريد الإلكتروني غير صحيح",
-    "password_length": "كلمة السر لازم تكون 6 محارف عالأقل",
-    "password_mismatch": "كلمتا السر مش متطابقتين"
+    "password_length": "يجب أن تتكون كلمة المرور من 6 أحرف على الأقل",
+    "password_mismatch": "كلمتا المرور غير متطابقتين"
   },
   "join_team": {
-    "code_hint": "أدخل كود الفريق",
+    "code_hint": "أدخل رمز الفريق",
     "button": "انضمام للفريق",
     "pending_message": "طلبك قيد المراجعة...",
     "success_title": "تم بنجاح",
@@ -44,96 +43,100 @@
   },
   "errors": {
     "no_internet": "لا يوجد اتصال بالإنترنت",
-    "no_data": "لا يوجد بيانات",
-    "no_auth": "لازم تسجل دخول أولًا",
-    "forbidden": "ما عندك صلاحية تعمل هيك",
+    "no_data": "لا توجد بيانات",
+    "no_auth": "يجب تسجيل الدخول أولاً",
+    "forbidden": "لا تملك الصلاحية للقيام بذلك",
     "validation": "تأكد من البيانات المدخلة",
-    "server": "في خطأ بالسيرفر، حاول لاحقًا",
-    "unknown": "في شي غلط صار",
+    "server": "حدث خطأ في الخادم، يرجى المحاولة لاحقاً",
+    "unknown": "حدث خطأ غير متوقع",
     "canceled": "تم إلغاء الطلب"
   },
   "home": {
-  "quote_1": "كل هدف كبير هو بالأساس مجموعة مهام صغيرة، انجزها  بالتتالي و اجعل  كل يوم يقربك خطوة إضافية من هدفك الحقيقي",
-  "quote_2": "الانضباط هو أن تختار بين ما تريده الآن وما تريده بحق، وكل مهمةٍ تنجزها تقرّبك أكثر مما تستحقه",
-  "quote_3": "الفريق الذي يخطط معاً، ويتحدث بصراحة، ويثق ببعضه البعض، يستطيع تحويل أصعب مشروع إلى إنجاز مشترك يفتخر به الجميع.",
-  "join_team_button": "الانضمام إلى فريق" ,
-  "teams": "الفرق",
-  "tasks": "المهام",
-  "no_statistics": "لا توجد إحصائيات بعد",
-  "notifications": "الإشعارات",
-  "profile": "الملف الشخصي"
+    "quote_1": "كل هدف كبير هو في الأساس سلسلة من المهام الصغيرة تُنجَز واحدة تلو الأخرى، فابدأ بخطوة اليوم ودع الغد يهتم بنفسه.",
+    "quote_2": "الانضباط هو أن تختار بين ما تريده الآن وما تريده أكثر من غيره، وكل مهمة تُنجزها تقرّبك خطوة من الأمور التي تهمّ فعلاً.",
+    "quote_3": "الفريق الذي يخطط معاً، ويتحدث بصراحة، ويثق ببعضه البعض، يستطيع تحويل أصعب مشروع إلى إنجاز مشترك يفتخر به الجميع.",
+    "no_statistics": "لا توجد إحصائيات بعد",
+    "join_team_button": "الانضمام إلى فريق",
+    "teams": "الفرق",
+    "tasks": "المهام",
+    "notifications": "الإشعارات",
+    "profile": "الملف الشخصي"
+  },
+  "drawer": {
+    "settings": "الإعدادات",
+    "language": "اللغة",
+    "theme": "المظهر",
+    "logout": "تسجيل الخروج"
+  },
+  "teams": {
+    "my_projects": "مشاريعي"
+  },
+  "team_details": {
+    "score": "{} نقطة",
+    "remaining_tasks_message": "تبقّت لديك {} مهمة، أكملها للحصول على نقاط"
+  },
+  "tasks": {
+    "search_a_task": "البحث عن مهمة",
+    "done_tasks": "المنجزة",
+    "progress_tasks": "قيد التنفيذ",
+    "pending_tasks": "قيد الانتظار"
+  },
+  "task_details": {
+    "title": "تفاصيل المهمة",
+    "team": "الفريق",
+    "assigned_by": "المكلِّف",
+    "assigned_to": "المكلَّف",
+    "deadline": "الموعد النهائي",
+    "steps_of_task": "خطوات المهمة",
+    "complete_send": "إكمال وإرسال",
+    "complete_all_steps_first": "يجب إكمال جميع الخطوات أولاً"
+  },
+  "task_success": {
+    "title": "تم إرسال مهمتك بنجاح!",
+    "you_got_score": "لقد حصلت على {} نقطة",
+    "continue_getting_scores": "استمر في جمع النقاط لاستبدالها بمكافآت",
+    "go_back_to_tasks": "الرجوع للمهام"
+  },
+  "pagination": {
+    "loading": "جارٍ التحميل",
+    "retry": "إعادة المحاولة",
+    "default_error": "حدث خطأ ما"
+  },
+  "admin": {
+    "welcome": "مرحباً بك أيها المسؤول",
+    "dashboard_description": "لوحة التحكم الخاصة بك متاحة عبر الويب.\nاستخدمها لإدارة الفرق والأعضاء والمهام.",
+    "open_dashboard": "فتح لوحة التحكم",
+    "manage_teams": "إدارة الفرق",
+    "manage_tasks": "إدارة المهام",
+    "manage_members": "إدارة الأعضاء",
+    "view_reports": "عرض التقارير"
+  },
+  "timer": {
+  "pomodoro": "بومودورو",
+  "work_time": "وقت العمل",
+  "short_break": "استراحة قصيرة",
+  "long_break": "استراحة طويلة",
+  "session": "الجلسة {}"
 },
-"drawer": {
-  "settings": "الإعدادات",
-  "language": "اللغة",
-  "theme": "المظهر",
-  "logout": "تسجيل الخروج"
-},
-
-"teams": {
-  "my_projects": "مشاريعي"
-},
-"team_details": {
-  "score": "{} نقطة",
-  "remaining_tasks_message": "باقي لك {} من المهمات، خلصيهم لتحصلي على نقاط"
-},
-"tasks": {
-  "search_a_task": "البحث عن مهمة",
-  "done_tasks": "المنجزة  ",
-  "progress_tasks": "قيد العمل",
-  "pending_tasks": " لم تبدأ  "
-},
-"task_details": {
-  "title": "تفاصيل المهمة",
-  "team": "الفريق",
-  "assigned_by": "كلفه",
-  "assigned_to": "المكلف",
-  "deadline": "الموعد النهائي",
-  "steps_of_task": "خطوات المهمة",
-  "complete_send": "إكمال وإرسال",
-  "complete_all_steps_first": "لازم تخلصي كل الخطوات أول"
-},
-"task_success": {
-  "title": "تم إرسال مهمتك بنجاح!",
-  "you_got_score": "حصلت على  نقطة",
-  "continue_getting_scores": "استمري بجمع النقاط لتستبدليها بمكافآت",
-  "go_back_to_tasks": "الرجوع للمهام"
-},
-"pagination": {
-  "loading": "جارٍ التحميل",
-  "retry": "إعادة المحاولة",
-  "default_error": "حدث خطأ ما"
-},
-"admin": {
-  "welcome": "مرحباً بك أيها المسؤول",
-  "dashboard_description": "لوحة التحكم الخاصة بك متاحة عبر الويب.\nاستخدمها لإدارة الفرق والأعضاء والمهام.",
-  "open_dashboard": "فتح لوحة التحكم",
-  "manage_teams": "إدارة الفرق",
-  "manage_tasks": "إدارة المهام",
-  "manage_members": "إدارة الأعضاء",
-  "view_reports": "عرض التقارير"
-},
-"notifications": {
-  "title": "الإشعارات",
-  "empty_title": "لا توجد إشعارات بعد",
-  "empty_subtitle": "ستظهر إشعاراتك هنا",
-  "retry": "إعادة المحاولة"
-},
-"profile": {
-  "statistics_title": "الإحصائيات",
-  "not_available": "الإحصائيات غير متوفرة حالياً",
-  "retry": "إعادة المحاولة",
-  "tasks_title": "المهام",
-  "tasks_done": " مهمة منجزة",
-  "tasks_in_progress": " مهمة قيد التنفيذ",
-  "tasks_pending": " مهمة قيد الانتظار",
-  "scores_title": "النقاط",
-  "current_score": "رصيدك الحالي  ",
-  "lost_score": "النقاط المفقودة ",
-  "reward_hint": "يمكنك الحصول على مكافأة",
-  "learn_more_scores": "معرفة المزيد عن النقاط"
-}
-  
-  
-
+  "notifications": {
+    "title": "الإشعارات",
+    "empty_title": "لا توجد إشعارات بعد",
+    "empty_subtitle": "ستظهر إشعاراتك هنا.",
+    "retry": "إعادة المحاولة",
+    "load_error": "تعذر تحميل الإشعارات"
+  },
+  "profile": {
+    "statistics_title": "الإحصائيات",
+    "not_available": "الإحصائيات غير متوفرة حالياً",
+    "retry": "إعادة المحاولة",
+    "tasks_title": "المهام",
+    "tasks_done": "أنجزت {} مهمة",
+    "tasks_in_progress": "{} مهمة قيد التنفيذ",
+    "tasks_pending": "{} مهمة قيد الانتظار",
+    "scores_title": "النقاط",
+    "current_score": "لديك {} نقطة",
+    "lost_score": "خسرت {} نقطة",
+    "reward_hint": "يمكنك الحصول على مكافأة!",
+    "learn_more_scores": "معرفة المزيد عن النقاط"
+  }
 }
