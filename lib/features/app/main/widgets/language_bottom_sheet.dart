@@ -36,14 +36,11 @@ void showLanguageBottomSheet(BuildContext context) {
               label: "العربية",
               isSelected: sheetContext.locale.languageCode == 'ar',
               onTap: () async {
-                await sheetContext.setLocale(
-                  const Locale('ar'),
-                );
-                Get.updateLocale(
-                  const Locale('ar'),
-                );
-                Get.forceAppUpdate();
-                if (sheetContext.mounted) {
+                await sheetContext.setLocale( const Locale('ar'),);
+                
+                Get.updateLocale(  const Locale('ar'),  );
+
+                Get.forceAppUpdate();   if (sheetContext.mounted) {
                   Navigator.pop(sheetContext);
                 }
               },
