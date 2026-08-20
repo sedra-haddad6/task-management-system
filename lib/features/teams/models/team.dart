@@ -2,7 +2,9 @@ import 'dart:convert';
 
 class Team {
   int id;
+
   String name;
+
   int pendingTasksCount;
 
   Team({
@@ -11,19 +13,24 @@ class Team {
     required this.pendingTasksCount,
   });
 
-  factory Team.fromRawJson(String str) => Team.fromJson(json.decode(str));
+  factory Team.fromRawJson(String str) =>
+      Team.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
   factory Team.fromJson(Map<String, dynamic> json) => Team(
-    id: json["id"],
-    name: json["name"],
-    pendingTasksCount: json["pending_tasks_count"] ?? 0,
-  );
+        id: json["id"] ?? 0,
+
+        // Backend sends "team_name" instead of "name"
+        name: json["team_name"] ?? "",
+
+        // Backend currently does not send pending_tasks_count
+        pendingTasksCount: json["pending_tasks_count"] ?? 0,
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "pending_tasks_count": pendingTasksCount,
-  };
+        "id": id,
+        "name": name,
+        "pending_tasks_count": pendingTasksCount,
+      };
 }

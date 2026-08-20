@@ -1,40 +1,74 @@
-import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
 import 'package:task_management_app/core/services/rest_api/rest_api.dart';
 
+import '../models/team.dart';
+
 class TeamsListPageController extends GetxController {
-  Future<ResponseModel> fetchTeams(int page, CancelToken cancel) async {
-    
-    //TODO WhEn THE api ready 
+  final RxList<Team> teams = <Team>[].obs;
 
-    // ============================================================
-    // return await APIService.instance.request(
-    //   Request(
-    //     endPoint: EndPoints.teams, // 
-    //     params: {"page": page},
-    //     cancelToken: cancel,
-    //   ),
-    // );
+  final RxBool isLoading = false.obs;
+  final RxBool hasError = false.obs;
+  final RxString errorMessage = ''.obs;
 
-    
-    //  بيانات وهمية مؤقتة
-    
-    await Future.delayed(const Duration(milliseconds: 400));
+  @override
+  void onInit() {
+    super.onInit();
 
-    if (page > 1) {
-      return ResponseModel(success: true, message: "", data: []);
+    fetchTeams();
+  }
+
+  Future<void> fetchTeams() async {
+    try {
+      isLoading.value = true;
+      hasError.value = false;
+      errorMessage.value = '';
+
+      final ResponseModel response =
+          await APIService.instance.request(
+        Request(
+          endPoint: EndPoints.teams,
+          method: RequestMethod.get,
+        ),
+      );
+
+      if (!response.success) {
+        hasError.value = true;
+        errorMessage.value = response.message;
+        return;
+      }
+
+      final data = response.data;
+
+      if (data is Map<String, dynamic>) {
+        final teamsData = data['teams'];
+
+        if (teamsData is List) {
+          teams.assignAll(
+            teamsData
+                .whereType<Map>()
+                .map(
+                  (json) => Team.fromJson(
+                    Map<String, dynamic>.from(json),
+                  ),
+                )
+                .toList(),
+          );
+        } else {
+          teams.clear();
+        }
+      } else {
+        teams.clear();
+      }
+    } catch (e) {
+      hasError.value = true;
+      errorMessage.value = e.toString();
+    } finally {
+      isLoading.value = false;
     }
+  }
 
-    return ResponseModel(
-      success: true,
-      message: "",
-      data: [
-        {"id": 1, "name": "IT team", "pending_tasks_count": 2},
-        {"id": 2, "name": "Team name", "pending_tasks_count": 0},
-        {"id": 3, "name": "The team's name", "pending_tasks_count": 5},
-        {"id": 4, "name": "IT team", "pending_tasks_count": 1},
-      ],
-    );
+  Future<void> refreshTeams() async {
+    await fetchTeams();
   }
 }
