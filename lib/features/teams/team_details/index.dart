@@ -6,11 +6,11 @@ import 'package:task_management_app/core/routes/routes.dart';
 import 'package:task_management_app/core/services/state_management/obs_builder.dart';
 
 import '../../../core/style/app_colors.dart';
-import '../../tasks/models/task_card.dart';
-import '../../tasks/task_details/models/nav.dart';
+import '../project_details/models/nav.dart';
 
 import 'controller.dart';
 import 'models/nav.dart';
+import 'models/widgets/project_card.dart';
 
 class TeamDetailsPage extends StatelessWidget {
   const TeamDetailsPage({super.key});
@@ -133,31 +133,76 @@ class TeamDetailsPage extends StatelessWidget {
 
                 const SizedBox(height: 24),
 
-                if (teamDetails.tasks.isNotEmpty)
-                  ...teamDetails.tasks.map(
-                    (task) => TaskCard(
-                      task: task,
-                      onTap: () => Get.toNamed(
-                        Pages.taskDetails.value,
-                        arguments: TaskDetailsPageNav(
-                          task.id,
-                        ),
+                // Projects section.
+                Obx(() {
+                  // Loading.
+                  if (controller.isProjectsLoading.value &&
+                      controller.projects.isEmpty) {
+                    return const Padding(
+                      padding: EdgeInsets.all(30),
+                      child: Center(
+                        child: CircularProgressIndicator(),
                       ),
-                    ),
-                  ),
+                    );
+                  }
 
-                if (teamDetails.tasks.isEmpty)
-                  Padding(
-                    padding: const EdgeInsets.all(30),
-                    child: Center(
-                      child: Text(
-                        "No tasks available",
-                        style: TextStyle(
-                          color: context.colors.fieldBorder,
+                  // Error.
+                  if (controller.hasProjectsError.value &&
+                      controller.projects.isEmpty) {
+                    return Padding(
+                      padding: const EdgeInsets.all(30),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            controller.projectsErrorMessage.value,
+                            textAlign: TextAlign.center,
+                          ),
+
+                          const SizedBox(height: 12),
+
+                          ElevatedButton(
+                            onPressed: controller.fetchProjects,
+                            child: const Text('Retry'),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+
+                  // Empty.
+                  if (controller.projects.isEmpty) {
+                    return Padding(
+                      padding: const EdgeInsets.all(30),
+                      child: Center(
+                        child: Text(
+                          "No projects available",
+                          style: TextStyle(
+                            color: context.colors.fieldBorder,
+                          ),
                         ),
                       ),
-                    ),
-                  ),
+                    );
+                  }
+
+                  // Projects list.
+                  return Column(
+                    children: controller.projects
+                        .map(
+                          (project) => ProjectCard(
+                            project: project,
+                            onTap: () => Get.toNamed(
+                              Pages.projectDetails.value,
+                              arguments: ProjectDetailsPageNav(
+                                teamId: nav.id,
+                                projectId: project.id,
+                              ),
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  );
+                }),
               ],
             ),
           ),
