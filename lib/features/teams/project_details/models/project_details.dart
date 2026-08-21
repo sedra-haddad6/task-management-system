@@ -1,10 +1,10 @@
 import 'package:task_management_app/features/tasks/models/task.dart';
 
 class ProjectDetails {
-  int id;
-  String title;
-  String status;
-  List<Task> tasks;
+  final int id;
+  final String title;
+  final String status;
+  final List<Task> tasks;
 
   ProjectDetails({
     required this.id,

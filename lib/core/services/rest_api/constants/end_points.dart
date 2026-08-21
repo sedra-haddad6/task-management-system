@@ -1,56 +1,52 @@
-
-
-// abstract class EndPoints {
-//   //##########  Base Url  ##########    static const String baseUrl = 'http://192.168.1.5:8000/api'; للموبايل
-
-  
-
-//   static const String baseUrl = 'http://127.0.0.1:8000/api';
-
-//   //SECTION - Auth
-
-  
-//   static const String login = "/auth/login";
-//   static const String signup = "/auth/register";
-//   static const String logout = "/auth/logout";
-//   //!SECTION
-// }
-
-
-
 abstract class EndPoints {
   //=========================================
   // Base URL
   //=========================================
 
   // Android Emulator
-  // static const String baseUrl = 'http://10.0.2.2:8000/api';
+  // static const String baseUrl =
+  //     'http://10.0.2.2:8000/api';
 
   // Real Device
-  // static const String baseUrl = 'http://192.168.1.5:8000/api';
+  // static const String baseUrl =
+  //     'http://192.168.1.5:8000/api';
 
   // Flutter Web / Desktop
-  static const String baseUrl = 'http://127.0.0.1:8000/api';
+  static const String baseUrl =
+      'http://127.0.0.1:8000/api';
 
   //=========================================
-  // Auth
+  // Authentication
   //=========================================
 
   static const String login = "/auth/login";
+
   static const String signup = "/auth/register";
+
   static const String logout = "/auth/logout";
-  static const String logoutAll = "/auth/logout-all";
+
+  static const String logoutAll =
+      "/auth/logout-all";
+
   static const String me = "/auth/me";
-  static const profileStats = "/user/statistics";
-  static const notifications = "/notifications"; 
+
+  //=========================================
+  // Notifications
+  //=========================================
+
+  static const String notifications =
+      "/notifications";
+
   //=========================================
   // Teams
   //=========================================
 
   static const String teams = "/teams";
+
   static const String joinTeam = "/teams/join";
 
-  static String team(int teamId) => "/teams/$teamId";
+  static String team(int teamId) =>
+      "/teams/$teamId";
 
   static String leaveTeam(int teamId) =>
       "/teams/$teamId/leave";
@@ -81,21 +77,40 @@ abstract class EndPoints {
   ) =>
       "/teams/$teamId/projects/$projectId";
 
-  static String projectTasks(
+
+//=========================================
+// Tasks
+//=========================================
+
+static const String tasks = "/tasks";
+
+static const String myTasks = "/tasks/my";
+
+static String projectTasks(
   int teamId,
   int projectId,
 ) =>
-    "/teams/$teamId/projects/$projectId/tasks";    
+    "/teams/$teamId/projects/$projectId/tasks";
 
-//=========================================
-  // Tasks
+static String task(int taskId) =>
+    "/tasks/$taskId";
+
+static String deadline(int taskId) =>
+    "/tasks/$taskId/deadline";
+
+  //=========================================
+  // Task Steps
   //=========================================
 
-  static const String tasks = "/tasks";
+  static String taskSteps(int taskId) =>
+      "/tasks/$taskId/steps";
 
-  static String task(int taskId) => "/tasks/$taskId";
+  static String completeStep(int stepId) =>
+      "/steps/$stepId/complete";
 
-  static String completeTask(int taskId) => "/tasks/$taskId/complete";
+  static String uncompleteStep(int stepId) =>
+      "/steps/$stepId/complete";
 
-
+      //مؤقت
+      static const String profileStats = "/profile";
 }

@@ -1,5 +1,5 @@
 class TeamDetailsPageNav {
-  int id;
+  final int id;
 
   TeamDetailsPageNav(this.id);
 }

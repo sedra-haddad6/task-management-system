@@ -1,6 +1,6 @@
 class ProjectDetailsPageNav {
-  int teamId;
-  int projectId;
+  final int teamId;
+  final int projectId;
 
   ProjectDetailsPageNav({
     required this.teamId,

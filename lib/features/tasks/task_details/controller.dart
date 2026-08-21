@@ -1,101 +1,174 @@
-import 'package:get/get.dart' hide Trans;
 import 'package:easy_localization/easy_localization.dart';
+import 'package:get/get.dart' hide Trans;
 
 import 'package:task_management_app/core/routes/routes.dart';
 import 'package:task_management_app/core/services/rest_api/rest_api.dart';
 import 'package:task_management_app/core/services/state_management/obs.dart';
 
 import '../models/task_step.dart';
-import '../task_success/models/nav.dart' as success_nav;
+import '../task_success/models/nav.dart'
+    as success_nav;
+
 import 'models/nav.dart';
 import 'models/task_details.dart';
 
-class TaskDetailsPageController extends GetxController {
+class TaskDetailsPageController
+    extends GetxController {
   final TaskDetailsPageNav nav;
 
-  TaskDetailsPageController({required this.nav});
+  TaskDetailsPageController({
+    required this.nav,
+  });
 
-  Obs<TaskDetails> taskDetails = Obs(null);
+  final Obs<TaskDetails> taskDetails =
+      Obs(null);
 
   @override
   void onInit() {
-    fetchDetails();
     super.onInit();
+
+    fetchDetails();
   }
+
+  //=========================================
+  // Fetch Task Details
+  //=========================================
 
   Future<void> fetchDetails() async {
-    // 
-    //  TODO when the api is ready 
-    
-    // ResponseModel response = await APIService.instance.request(
-    //   Request(
-    //     endPoint: EndPoints.task(nav.id), 
-    //     fromJson: TaskDetails.fromJson,
-    //   ),
-    // );
-    // if (response.success) {
-    //   taskDetails.data = response.data;
-    // } else {
-    //   taskDetails.error = response.message;
-    // }
-
-    
-    //  بيانات وهمية مؤقتة
-    // ============================================================
-    await Future.delayed(const Duration(milliseconds: 400));
-
-    taskDetails.data = TaskDetails(
-      id: nav.id,
-      name: "create and save folders",
-      deadline: "22/5",
-      teamName: "IT team",
-      assignedByName: "Ahmad Hameed",
-      assignedToName: "Khaled Khaled",
-      steps: [
-        TaskStep(id: "1", description: "Project Receipt"),
-        TaskStep(id: "2", description: "File Review"),
-        TaskStep(id: "3", description: "Project Classification (Type)"),
-        TaskStep(id: "4", description: "File Renaming"),
-        TaskStep(id: "5", description: "Upload to Server/Storage"),
-      ],
+    final ResponseModel response =
+        await APIService.instance.request(
+      Request(
+        endPoint: EndPoints.task(nav.id),
+        method: RequestMethod.get,
+      ),
     );
-  }
 
-  void toggleStep(String stepId) {
-    final step = taskDetails.data!.steps.firstWhere((s) => s.id == stepId);
-    step.isChecked = !step.isChecked;
-    taskDetails.data = taskDetails.data; // مشان الواجهة تعيد الرسم
-  }
-
-  Future<void> completeTask() async {
-    if (!taskDetails.data!.allStepsChecked) {
-      Get.snackbar("", "task_details.complete_all_steps_first".tr());
+    if (!response.success) {
+      taskDetails.error =
+          response.message;
       return;
     }
 
-    
-// TODO when the api is ready 
-//    
-    // ResponseModel response = await APIService.instance.request(
-    //   Request(
-    //     method: RequestMethod.post,
-    //     endPoint: EndPoints.completeTask(nav.id), // ضيفيها بـ end_points.dart
-    //   ),
-    // );
-    // if (response.success) {
-    //   Get.toNamed(
-    //     Pages.taskSuccess.value,
-    //     arguments: success_nav.TaskSuccessPageNav(score: response.data["score"]),
-    //   );
-    // } else {
-    //   Get.snackbar("", response.message);
-    // }
+    final dynamic data = response.data;
 
-    //  dummy
-    await Future.delayed(const Duration(milliseconds: 500));
+    Map<String, dynamic>? taskJson;
+
+    if (data is Map<String, dynamic>) {
+      final dynamic task =
+          data['task'];
+
+      if (task is Map) {
+        taskJson =
+            Map<String, dynamic>.from(
+          task,
+        );
+      } else {
+        taskJson =
+            Map<String, dynamic>.from(
+          data,
+        );
+      }
+    }
+
+    if (taskJson == null) {
+      taskDetails.error =
+          "task_details.load_error".tr();
+      return;
+    }
+
+    taskDetails.data =
+        TaskDetails.fromJson(
+      taskJson,
+    );
+  }
+
+  //=========================================
+  // Refresh
+  //=========================================
+
+  Future<void> refreshDetails() async {
+    taskDetails.reset();
+
+    await fetchDetails();
+  }
+
+  //=========================================
+  // Complete / Uncomplete Step
+  //=========================================
+
+  Future<void> toggleStep(
+    TaskStep step,
+  ) async {
+    final bool oldValue =
+        step.isChecked;
+
+    final ResponseModel response =
+        await APIService.instance.request(
+      Request(
+        method: oldValue
+            ? RequestMethod.delete
+            : RequestMethod.post,
+        endPoint: oldValue
+            ? EndPoints.uncompleteStep(
+                step.id,
+              )
+            : EndPoints.completeStep(
+                step.id,
+              ),
+      ),
+    );
+
+    if (!response.success) {
+      Get.snackbar(
+        "",
+        response.message,
+      );
+
+      return;
+    }
+
+    // Update local UI only after API succeeds.
+    step.isChecked = !oldValue;
+
+    taskDetails.data =
+        taskDetails.data;
+  }
+
+  //=========================================
+  // Complete Task
+  //=========================================
+
+  Future<void> completeTask() async {
+    final details =
+        taskDetails.data;
+
+    if (details == null) {
+      return;
+    }
+
+    if (!details.allStepsChecked) {
+      Get.snackbar(
+        "",
+        "task_details.complete_all_steps_first"
+            .tr(),
+      );
+
+      return;
+    }
+
+    // The backend updates task status
+    // automatically when the final step
+    // is completed.
+    //
+    // Therefore we do NOT call a fake
+    // /tasks/{id}/complete endpoint here.
+
     Get.toNamed(
       Pages.taskSuccess.value,
-      arguments: success_nav.TaskSuccessPageNav(score: 150),
+      arguments:
+          success_nav.TaskSuccessPageNav(
+        score: 0,
+      ),
     );
   }
 }

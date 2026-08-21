@@ -322,37 +322,41 @@ class TaskDetailsPage extends StatelessWidget {
                   children: [
 
                     ...taskDetails.steps.map(
-                      (step) => CheckboxListTile(
-                        value: step.isChecked,
+  (step) => CheckboxListTile(
+    value: step.isChecked,
 
-                        onChanged: (_) =>
-                            controller.toggleStep(step.id),
+    onChanged: (_) =>
+        controller.toggleStep(step),
 
-                        title: Text(
-                          step.description,
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: step.isChecked
-                                ? context.colors.fieldBorder
-                                : context.colors.darkBlue,
-                            decoration: step.isChecked
-                                ? TextDecoration.lineThrough
-                                : TextDecoration.none,
-                          ),
-                        ),
+    title: Text(
+      step.description,
 
-                        activeColor: context.colors.middleBlue,
+      style: TextStyle(
+        fontSize: 14,
 
-                        controlAffinity:
-                            ListTileControlAffinity.trailing,
+        color: step.isChecked
+            ? context.colors.fieldBorder
+            : context.colors.darkBlue,
 
-                        contentPadding:
-                            const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 2,
-                        ),
-                      ),
-                    ),
+        decoration: step.isChecked
+            ? TextDecoration.lineThrough
+            : TextDecoration.none,
+      ),
+    ),
+
+    activeColor:
+        context.colors.middleBlue,
+
+    controlAffinity:
+        ListTileControlAffinity.trailing,
+
+    contentPadding:
+        const EdgeInsets.symmetric(
+      horizontal: 16,
+      vertical: 2,
+    ),
+  ),
+),
 
                     // =====================================================
                     // PROGRESS

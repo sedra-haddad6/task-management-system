@@ -11,58 +11,260 @@ import 'models/project_details.dart';
 class ProjectDetailsPageController extends GetxController {
   final ProjectDetailsPageNav nav;
 
-  ProjectDetailsPageController({required this.nav});
+  ProjectDetailsPageController({
+    required this.nav,
+  });
 
-  Obs<ProjectDetails> projectDetails = Obs(null);
+  //=========================================
+  // Project Details
+  //=========================================
+
+  final Obs<ProjectDetails> projectDetails = Obs(null);
+
+  //=========================================
+  // Tasks
+  //=========================================
+
+  final RxList<Task> tasks = <Task>[].obs;
+
+  final RxBool isTasksLoading = false.obs;
+
+  final RxBool hasTasksError = false.obs;
+
+  final RxString tasksErrorMessage = ''.obs;
+
+  //=========================================
+  // Init
+  //=========================================
 
   @override
   void onInit() {
-    fetchDetails();
     super.onInit();
+
+    fetchDetails();
   }
 
+  //=========================================
+  // Fetch Project Details + Tasks
+  //=========================================
+
   Future<void> fetchDetails() async {
-    // نداء أول: معلومات المشروع (endpoint من النوع اللي فيه success/data)
-    ResponseModel projectResponse = await APIService.instance.request(
-      Request(endPoint: EndPoints.project(nav.teamId, nav.projectId)),
+    // Reset task state
+    isTasksLoading.value = true;
+    hasTasksError.value = false;
+    tasksErrorMessage.value = '';
+
+    //=========================================
+    // Fetch Project
+    //=========================================
+
+    final ResponseModel projectResponse =
+        await APIService.instance.request(
+      Request(
+        endPoint: EndPoints.project(
+          nav.teamId,
+          nav.projectId,
+        ),
+        method: RequestMethod.get,
+      ),
     );
 
     if (!projectResponse.success) {
-      projectDetails.error = projectResponse.message;
+      isTasksLoading.value = false;
+
+      projectDetails.error =
+          projectResponse.message;
+
       return;
     }
 
-    final projectJson = projectResponse.data?["project"];
+    //=========================================
+    // Extract Project JSON
+    //=========================================
+
+    final dynamic projectData =
+        projectResponse.data;
+
+    Map<String, dynamic>? projectJson;
+
+    if (projectData is Map<String, dynamic>) {
+      final dynamic nestedProject =
+          projectData['project'];
+
+      if (nestedProject is Map) {
+        projectJson =
+            Map<String, dynamic>.from(
+          nestedProject,
+        );
+      } else {
+        projectJson =
+            Map<String, dynamic>.from(
+          projectData,
+        );
+      }
+    }
 
     if (projectJson == null) {
-      projectDetails.error = "project_details.load_error".tr();
+      isTasksLoading.value = false;
+
+      projectDetails.error =
+          "project_details.load_error".tr();
+
       return;
     }
-//TODO
-    // نداء تاني: مهام هاد المشروع
-    // endpoint من النوع اللي بدون success/data، لهيك بنقرأ الرد يدوياً
-    ResponseModel tasksResponse = await APIService.instance.request(
-      Request(endPoint: EndPoints.projectTasks(nav.teamId, nav.projectId)),
-    );
 
-    List<Task> tasks = [];
+    //=========================================
+    // Fetch Project Tasks
+    //=========================================
 
-    if (tasksResponse.success && tasksResponse.data?["tasks"] is List) {
-      tasks = (tasksResponse.data["tasks"] as List)
-          .map((taskJson) => Task.fromJson(taskJson))
-          .toList();
-    }
+    await fetchProjectTasks();
+
+    //=========================================
+    // Build Project Details
+    //=========================================
 
     projectDetails.data = ProjectDetails(
-      id: projectJson["id"],
-      title: projectJson["title"],
-      status: projectJson["status"] ?? "pending",
-      tasks: tasks,
+      id: _parseInt(
+        projectJson['id'],
+      ),
+      title:
+          projectJson['title']?.toString() ??
+              '',
+      status:
+          projectJson['status']?.toString() ??
+              'pending',
+      tasks: tasks.toList(),
     );
   }
 
+  //=========================================
+  // Fetch Project Tasks
+  //=========================================
+
+  Future<void> fetchProjectTasks() async {
+    isTasksLoading.value = true;
+    hasTasksError.value = false;
+    tasksErrorMessage.value = '';
+
+    final ResponseModel response =
+        await APIService.instance.request(
+      Request(
+        endPoint: EndPoints.projectTasks(
+          nav.teamId,
+          nav.projectId,
+        ),
+        method: RequestMethod.get,
+      ),
+    );
+
+    if (!response.success) {
+      tasks.clear();
+
+      hasTasksError.value = true;
+
+      tasksErrorMessage.value =
+          response.message;
+
+      isTasksLoading.value = false;
+
+      return;
+    }
+
+    try {
+      final dynamic data = response.data;
+
+      List<dynamic> tasksJson = [];
+
+      // Backend:
+      //
+      // data: {
+      //    tasks: [...]
+      // }
+
+      if (data is Map<String, dynamic>) {
+        final dynamic list = data['tasks'];
+
+        if (list is List) {
+          tasksJson = list;
+        }
+      }
+
+      // In case API returns the list directly
+      else if (data is List) {
+        tasksJson = data;
+      }
+
+      //=========================================
+      // Convert JSON -> Task
+      //=========================================
+
+      final List<Task> loadedTasks =
+          tasksJson
+              .whereType<Map>()
+              .map(
+                (json) => Task.fromJson(
+                  Map<String, dynamic>.from(json),
+                ),
+              )
+              .toList();
+
+      tasks.assignAll(loadedTasks);
+    } catch (e) {
+      tasks.clear();
+
+      hasTasksError.value = true;
+
+      tasksErrorMessage.value =
+          e.toString();
+    }
+
+    isTasksLoading.value = false;
+  }
+
+  //=========================================
+  // Retry Tasks
+  //=========================================
+
+  Future<void> retryTasks() async {
+    await fetchProjectTasks();
+
+    // Update project object with new tasks
+    final currentProject =
+        projectDetails.data;
+
+    if (currentProject != null) {
+      projectDetails.data =
+          ProjectDetails(
+        id: currentProject.id,
+        title: currentProject.title,
+        status: currentProject.status,
+        tasks: tasks.toList(),
+      );
+    }
+  }
+
+  //=========================================
+  // Refresh
+  //=========================================
+
   Future<void> refreshDetails() async {
     projectDetails.reset();
+
     await fetchDetails();
+  }
+
+  //=========================================
+  // Parse Int
+  //=========================================
+
+  int _parseInt(dynamic value) {
+    if (value is int) {
+      return value;
+    }
+
+    return int.tryParse(
+          value?.toString() ?? '',
+        ) ??
+        0;
   }
 }

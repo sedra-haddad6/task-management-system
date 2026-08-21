@@ -144,5 +144,25 @@
   "project_details": {
   "no_tasks": "No tasks yet",
   "load_error": "Failed to load project details"
-}
+},
+
+
+  "common": {
+    "retry": "Retry"
+  },
+
+  "team_details": {
+    "no_projects": "No projects available"
+  },
+
+  "project_details": {
+    "load_error": "Unable to load project details.",
+    "no_tasks": "No tasks available."
+  },
+
+  "task_details": {
+    "load_error": "Unable to load task details.",
+    "deadline": "Deadline"
+  }
+
 }

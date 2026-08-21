@@ -1,4 +1,3 @@
-
 import '../../../tasks/models/task.dart';
 import 'team_member.dart';
 
@@ -13,8 +12,8 @@ class TeamDetails {
 
   final List<TeamMember> members;
 
-  // These are kept for the existing UI.
-  // The current /teams/{id} API does not provide them yet.
+  // Kept for the existing UI.
+  // The current team endpoint does not provide these values.
   final int score;
   final int pendingTasksCount;
   final List<Task> tasks;
@@ -32,28 +31,36 @@ class TeamDetails {
     this.tasks = const [],
   });
 
-  factory TeamDetails.fromJson(Map<String, dynamic> json) {
-    final admin = json['admin'];
-
-    final membersJson = json['members'];
+  factory TeamDetails.fromJson(
+    Map<String, dynamic> json,
+  ) {
+    final dynamic admin = json['admin'];
+    final dynamic membersJson = json['members'];
 
     return TeamDetails(
-      id: json['id'] ?? 0,
+      id: json['id'] is int
+          ? json['id']
+          : int.tryParse(
+                json['id']?.toString() ?? '',
+              ) ??
+              0,
 
-      name: json['team_name'] ?? '',
+      name: json['team_name']?.toString() ?? '',
 
-      joinCode: json['join_code'] ?? '',
+      joinCode: json['join_code']?.toString() ?? '',
 
       managerName: admin is Map
-          ? (admin['name'] ?? '')
+          ? admin['name']?.toString() ?? ''
           : '',
 
-      managerEmail: admin is Map
-          ? admin['email']?.toString()
+      managerEmail: admin is Map &&
+              admin['email'] != null
+          ? admin['email'].toString()
           : null,
 
-      managerProfileImage: admin is Map
-          ? admin['profile_image']?.toString()
+      managerProfileImage: admin is Map &&
+              admin['profile_image'] != null
+          ? admin['profile_image'].toString()
           : null,
 
       members: membersJson is List
@@ -67,10 +74,9 @@ class TeamDetails {
               .toList()
           : [],
 
-      // Not provided by the current endpoint.
       score: 0,
       pendingTasksCount: 0,
-      tasks: [],
+      tasks: const [],
     );
   }
 }

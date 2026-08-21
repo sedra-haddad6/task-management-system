@@ -17,20 +17,40 @@ class TeamMember {
     required this.pointsEarned,
   });
 
-  factory TeamMember.fromJson(Map<String, dynamic> json) {
-    final pivot = json['pivot'];
+  factory TeamMember.fromJson(
+    Map<String, dynamic> json,
+  ) {
+    final dynamic pivot = json['pivot'];
 
     return TeamMember(
-      id: json['id'] ?? 0,
-      name: json['name'] ?? '',
-      email: json['email'] ?? '',
-      role: json['role'] ?? '',
-      profileImage: json['profile_image']?.toString(),
+      id: json['id'] is int
+          ? json['id']
+          : int.tryParse(
+                json['id']?.toString() ?? '',
+              ) ??
+              0,
+
+      name: json['name']?.toString() ?? '',
+
+      email: json['email']?.toString() ?? '',
+
+      role: json['role']?.toString() ?? '',
+
+      profileImage: json['profile_image'] != null
+          ? json['profile_image'].toString()
+          : null,
+
       status: pivot is Map
-          ? (pivot['status'] ?? 'active')
+          ? pivot['status']?.toString() ?? 'active'
           : 'active',
+
       pointsEarned: pivot is Map
-          ? (pivot['points_earned'] ?? 0)
+          ? int.tryParse(
+                pivot['points_earned']
+                        ?.toString() ??
+                    '',
+              ) ??
+              0
           : 0,
     );
   }

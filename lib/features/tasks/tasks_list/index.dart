@@ -60,23 +60,43 @@ class TasksListPage extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 12),
-        Expanded(
-          child: ListViewPagination<Task>.builder(
-            tag: "all_tasks",
-            fetchApi: controller.fetchTasks,
-            fromJson: Task.fromJson,
-            onControllerInit: (paginationController) {
-              controller.paginationController = paginationController;
-            },
-            itemBuilder: (context, index, task) => TaskCard(
-              task: task,
-              onTap: () => Get.toNamed(
-                Pages.taskDetails.value,
-                arguments: TaskDetailsPageNav(task.id),
-              ),
+     Expanded(
+  child: ListViewPagination<Task>.builder(
+    tag: "all_tasks",
+
+    fetchApi: controller.fetchTasks,
+
+    fromJson: Task.fromJson,
+
+    onControllerInit: (
+      paginationController,
+    ) {
+      controller.paginationController =
+          paginationController;
+    },
+
+    itemBuilder: (
+      context,
+      index,
+      task,
+    ) {
+      return TaskCard(
+        task: task,
+
+        onTap: () {
+          Get.toNamed(
+            Pages.taskDetails.value,
+
+            arguments:
+                TaskDetailsPageNav(
+              task.id,
             ),
-          ),
-        ),
+          );
+        },
+      );
+    },
+  ),
+),
       ],
     );
   }
