@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart' hide Trans;
-import 'package:task_management_app/core/style/repo.dart';
 
 import '../../core/style/app_colors.dart';
 import '../../core/widgets/buttons/elevated_button.dart';
@@ -50,7 +49,7 @@ class HomePage extends StatelessWidget {
                ,style: TextStyle(
          fontSize: 16,
          height: 1.85,
-            color: StyleRepo.darkBlue, 
+            color: context.colors.darkBlue, 
   ), ),
           ),
 
@@ -72,7 +71,7 @@ class HomePage extends StatelessWidget {
           Center(child: Text("Join team to start your tasks !".tr(),
           style: TextStyle(
          fontSize: 16,
-            color: StyleRepo.darkBlue, 
+            color: context.colors.darkBlue, 
   ),
            
           

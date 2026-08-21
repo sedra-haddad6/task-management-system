@@ -140,5 +140,9 @@
     "lost_score": "You lost {} score",
     "reward_hint": "Can get a reward!",
     "learn_more_scores": "Learn more about scores"
-  }
+  },
+  "project_details": {
+  "no_tasks": "No tasks yet",
+  "load_error": "Failed to load project details"
+}
 }

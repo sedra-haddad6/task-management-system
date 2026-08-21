@@ -14,6 +14,7 @@ import '../../features/tasks/task_details/index.dart';
 import '../../features/tasks/task_success/index.dart';
 import '../../features/teams/admin/index.dart';
 import '../../features/teams/join/index.dart';
+import '../../features/teams/project_details/index.dart';
 import '../../features/teams/team_details/index.dart';
 
 abstract class AppRouting {
@@ -33,9 +34,10 @@ enum Pages {
   webDashboard,
 
   // timer,
-
+  
   notifications,
-  teamDetails,   
+  teamDetails,
+  projectDetails,   
   taskDetails,   
   taskSuccess,
   
@@ -57,8 +59,8 @@ enum Pages {
     webDashboard => GetPage(name: value,page: () =>  WebDashboardPage()),
 
     // timer => GetPage(name: value, page: ()=> TimerPage()),
-
-    teamDetails => GetPage(name: value, page: () => TeamDetailsPage()),   
+    teamDetails => GetPage(name: value, page: () => TeamDetailsPage()), 
+    projectDetails => GetPage(name: value, page: () => ProjectDetailsPage()),
     taskDetails => GetPage(name: value, page: () => TaskDetailsPage()),   
     taskSuccess => GetPage(name: value, page: () => TaskSuccessPage()),
 
