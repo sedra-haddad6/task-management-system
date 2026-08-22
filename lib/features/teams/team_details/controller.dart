@@ -21,6 +21,33 @@ class TeamDetailsPageController extends GetxController {
   final Obs<TeamDetails> teamDetails =
       Obs(null);
 
+
+
+  final RxBool isLeavingTeam = false.obs;
+
+Future<bool> leaveTeam() async {
+  isLeavingTeam.value = true;
+
+  final ResponseModel response =
+      await APIService.instance.request(
+    Request(
+      endPoint: EndPoints.leaveTeam(nav.id), // تأكد من وجود هاد الـ endpoint بالـ EndPoints
+      method: RequestMethod.post,
+    ),
+  );
+
+  isLeavingTeam.value = false;
+
+  if (response.success) {
+    Get.back(); // ارجع لصفحة الفرق
+    Get.snackbar('نجاح', 'تم مغادرة الفريق بنجاح');
+    return true;
+  } else {
+    Get.snackbar('خطأ', response.message);
+    return false;
+  }
+}
+
   //=========================================
   // Projects
   //=========================================
